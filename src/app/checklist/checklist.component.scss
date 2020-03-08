@@ -1,19 +1,18 @@
-
 .met-icon {
   color: #4CAF50;
-
+  margin-right: 8px;
 }
 
 .not-met-icon {
-  color: #D50000
+  color: #D50000;
+  margin-right: 8px;
 }
 
 .suggestion-icon {
-  color: #FFD600
+  color: #FFD600;
+  margin-right: 8px;
 }
 
-.met-icon, .not-met-icon, .suggestion-icon {
-  display: inline-flex;
+td {
   vertical-align: middle;
-  margin-right: 8px;
 }

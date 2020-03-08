@@ -1,4 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {
+  Component,
+  Input,
+} from '@angular/core';
 import {Step} from '../step/step';
 import {ChecklistService} from '../checklist.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
@@ -28,7 +31,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
  * The steps component renders all the steps
  */
 export class StepsComponent {
-
   /**
    * Contains all the steps that should be presented
    */
@@ -51,5 +53,12 @@ export class StepsComponent {
   shouldShowStep(step: Step): boolean {
 
     return step.shouldShow(this.checklistService);
+  }
+
+  scrollToBottom() {
+    window.scroll({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
   }
 }

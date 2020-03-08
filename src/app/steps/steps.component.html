@@ -2,5 +2,5 @@
 <hr>
 
 <div *ngFor="let step of steps">
-  <app-step [step]="step" *ngIf="shouldShowStep(step)" [@fade]="'in'" ></app-step>
+  <app-step [step]="step" *ngIf="shouldShowStep(step)" [@fade] (@fade.start)="scrollToBottom()"></app-step>
 </div>

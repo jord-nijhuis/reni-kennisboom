@@ -1,0 +1,6 @@
+
+<hr>
+
+<div *ngFor="let step of steps">
+  <app-step [step]="step" *ngIf="shouldShowStep(step)"></app-step>
+</div>

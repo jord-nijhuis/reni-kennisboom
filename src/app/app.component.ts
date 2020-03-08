@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { STEPS } from './steps/steps';
+import {Step} from './step/step';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'reni-kennisboom';
+
+  protected steps: Step[] = STEPS;
 }

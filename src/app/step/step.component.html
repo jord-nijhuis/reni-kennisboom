@@ -1,0 +1,19 @@
+<div>
+  <h3>{{step.title}}</h3>
+
+  <!-- Only one option allowed: radio buttons -->
+  <mat-radio-group *ngIf="!step.multiple">
+    <mat-radio-button *ngFor="let option of step.options" [value]="option"
+                      (change)="onOptionChange(option, true)" [checked]="isChecked(option)">
+      {{ option.name }}
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <!-- Multiple options allowed: checkboxes -->
+  <div *ngIf="step.multiple" id="checkboxGroup">
+    <mat-checkbox *ngFor="let option of step.options" (change)="onOptionChange(option, $event.checked)"
+                  [checked]="isChecked(option)">
+      {{ option.name }}
+    </mat-checkbox>
+  </div>
+</div>

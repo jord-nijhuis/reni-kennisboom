@@ -1,7 +1,7 @@
 # Recht & Informatiemanagement Kennisboom
 
 Deze repository bevat de implementatie van de kennisboom voor het vak "Recht & Informatiemanagement" van de RUG.
-De meest recente versie van de kennisboom is te vinden op https://reni.jordev.nl/. Tevens zijn alle versies ook
+De meest recente versie van de kennisboom is te vinden op https://avg.jordev.nl/. Tevens zijn alle versies ook
 beschikbaar onder releases.
 
 

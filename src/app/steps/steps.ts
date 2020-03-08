@@ -16,6 +16,14 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
+    'Deze checklist is niet voor u van toepassing',
+    [],
+    null,
+    null,
+    checklistService => checklistService.hasItems(ChecklistService.PROCESSING_NONE)
+  ),
+
+  new Step(
     'Is er een verwerkersovereenkomst van toepassing?',
     [
       new Option(ChecklistService.AGREEMENT_YES, 'Ja'),

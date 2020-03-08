@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import {Step} from '../step/step';
 import {ChecklistService} from '../checklist.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-steps',
@@ -12,19 +12,23 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   styleUrls: ['./steps.component.scss'],
   animations: [
     trigger('fade', [
-      state('in', style({opacity: 1})),
-      transition('void => *', [
+      transition(':enter', [
         style({
-          opacity: 0
+          opacity: 0,
+          height: 0,
         }),
-        animate(450)
+        animate('.4s ease-out', style({height: '*'})),
+        animate('.2s ease-out', style({opacity: 1}))
       ]),
 
-      transition('* => void',
-        animate(450, style({
-            opacity: 0
-          })
-        ))
+      transition(':leave', [
+        style({
+          opacity: 1,
+          height: '*'
+        }),
+        animate('.2s ease-out', style({opacity: 0})),
+        animate('.4s ease-out', style({height: 0}))
+      ])
     ])]
 })
 /**

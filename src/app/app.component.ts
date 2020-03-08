@@ -23,11 +23,4 @@ export class AppComponent {
 
     return this.checklistService.hasItems(ChecklistService.INFORMS_SUBJECT_YES, ChecklistService.INFORMS_SUBJECT_NO);
   }
-
-  /**
-   * Returns false when the user has selected that he does not do any data processing
-   */
-  doesNotDoProcessing(): boolean {
-    return this.checklistService.hasItems(ChecklistService.PROCESSING_NONE);
-  }
 }

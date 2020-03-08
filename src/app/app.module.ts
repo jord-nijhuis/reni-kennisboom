@@ -10,12 +10,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { StepsComponent } from './steps/steps.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ChecklistComponent } from './checklist/checklist.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     StepComponent,
-    StepsComponent
+    StepsComponent,
+    ChecklistComponent
   ],
 
   imports: [
@@ -25,7 +29,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCardModule,
     MatButtonModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

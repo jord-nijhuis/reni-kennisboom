@@ -1,0 +1,65 @@
+<h2>Resultaat</h2>
+
+<div *ngIf="notMetRequirements.length > 0">
+  <h3>Waar u nog niet aan voldoet</h3>
+  <mat-table [dataSource]="notMetRequirements">
+
+    <ng-container matColumnDef="icon">
+
+      <th mat-header-cell *matHeaderCellDef> Icon </th>
+      <td mat-cell *matCellDef="let name">
+        <mat-icon class="not-met-icon">error</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Naam </th>
+      <td mat-cell *matCellDef="let name">{{ name }}</td>
+    </ng-container>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </mat-table>
+</div>
+
+<div *ngIf="suggestions.length > 0">
+  <h3>Enkele suggesties</h3>
+  <mat-table [dataSource]="suggestions">
+
+    <ng-container matColumnDef="icon">
+
+      <th mat-header-cell *matHeaderCellDef> Icon </th>
+      <td mat-cell *matCellDef="let name">
+        <mat-icon class="suggestion-icon">warning</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Naam </th>
+      <td mat-cell *matCellDef="let name">{{ name }}</td>
+    </ng-container>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </mat-table>
+</div>
+
+<div *ngIf="metRequirements.length > 0">
+  <h3>Waar u al aan voldoet</h3>
+  <mat-table [dataSource]="metRequirements">
+
+    <ng-container matColumnDef="icon">
+
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let name">
+        <mat-icon class="met-icon">check_circle</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Naam </th>
+      <td mat-cell *matCellDef="let name">{{ name }}</td>
+    </ng-container>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </mat-table>
+</div>
+

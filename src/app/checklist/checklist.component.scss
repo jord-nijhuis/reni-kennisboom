@@ -1,0 +1,19 @@
+
+.met-icon {
+  color: #4CAF50;
+
+}
+
+.not-met-icon {
+  color: #D50000
+}
+
+.suggestion-icon {
+  color: #FFD600
+}
+
+.met-icon, .not-met-icon, .suggestion-icon {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-right: 8px;
+}

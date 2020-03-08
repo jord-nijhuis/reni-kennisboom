@@ -20,12 +20,7 @@ export class StepComponent implements OnDestroy {
   @Input()
   step: Step;
 
-  protected checklistService: ChecklistService;
-
-  constructor(checklistService: ChecklistService) {
-
-    this.checklistService = checklistService;
-  }
+  constructor(protected checklistService: ChecklistService) {}
 
   /**
    * Return the checked state of an option

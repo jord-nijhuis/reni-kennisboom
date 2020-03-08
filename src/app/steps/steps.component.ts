@@ -18,11 +18,7 @@ export class StepsComponent {
   @Input()
   steps: Step[];
 
-  checklistService: ChecklistService;
-
-  constructor(checklistService: ChecklistService) {
-    this.checklistService = checklistService;
-  }
+  constructor(protected checklistService: ChecklistService) {}
 
   /**
    * Returns whether the given step should be displayed

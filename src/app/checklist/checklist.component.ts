@@ -29,15 +29,15 @@ export class ChecklistComponent {
       ChecklistService.PROCESSING_ALLOWED_GENERAL,
       ChecklistService.PROCESSING_ALLOWED_PERMISSION
     )) {
-      requirements.push('Er is een geldige verwerkingsgrondslag');
+      requirements.push('U heeft een rechtmatige grondslag voor de verwerking van persoonsgegevens');
     }
 
     if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_YES)) {
-      requirements.push('U kunt aantonen dat u toestemming heeft van de betrokkenne');
+      requirements.push('U kunt aantonen dat u toestemming heeft van de betrokkenne.');
     }
 
     if (this.checklistService.getItem(ChecklistService.ACCOUNTABILITY_YES)) {
-      requirements.push('Er wordt voldaan aan de verantwoordingsplicht');
+      requirements.push('Er wordt voldaan aan de verantwoordingsplicht.');
     }
 
     if (this.checklistService.getItem(ChecklistService.DPIA_YES)) {
@@ -45,15 +45,15 @@ export class ChecklistComponent {
     }
 
     if (this.checklistService.getItem(ChecklistService.DATA_PROTECTION_OFFICER_YES)) {
-      requirements.push('Er is een functionaris gegevensbescherming aangewezen');
+      requirements.push('Er is een functionaris gegevensbescherming aangewezen.');
     }
 
     if (this.checklistService.getItem(ChecklistService.PRIVACY_BY_DESIGN_YES)) {
-      requirements.push('U houdt zich aan het wettelijke vereiste "Privacy by Design"');
+      requirements.push('U houdt zich aan het wettelijke vereiste "Privacy by Design".');
     }
 
     if (this.checklistService.getItem(ChecklistService.PRIVACY_BY_DEFAULT_YES)) {
-      requirements.push('U houdt zich aan het wettelijke vereiste "Privacy by Default"');
+      requirements.push('U houdt zich aan het wettelijke vereiste "Privacy by Default".');
     }
 
     if (this.checklistService.getItem(ChecklistService.KNOWLEDGE_DATA_BREACH_YES)) {
@@ -74,7 +74,7 @@ export class ChecklistComponent {
     const requirements: string[] = [];
 
     if (this.checklistService.getItem(ChecklistService.AGREEMENT_NO)) {
-      requirements.push('Er is geen verwerkingsovereenkomst afgesloten met de externe partij');
+      requirements.push('Er is geen verwerkingsovereenkomst afgesloten met de externe partij.');
     }
 
     if (!this.checklistService.hasItems(
@@ -84,15 +84,15 @@ export class ChecklistComponent {
       ChecklistService.PROCESSING_ALLOWED_GENERAL,
       ChecklistService.PROCESSING_ALLOWED_PERMISSION
     )) {
-      requirements.push('Er is geen geldige verwerkingsgrondslag');
+      requirements.push('U heeft geen rechtmatige grondslag voor de verwerking van persoonsgegevens.');
     }
 
     if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_NO)) {
-      requirements.push('U kunt niet aantonen dat u toestemming heeft van de betrokkenne');
+      requirements.push('U kunt niet aantonen dat u toestemming heeft van de betrokkenne.');
     }
 
     if (this.checklistService.getItem(ChecklistService.ACCOUNTABILITY_NO)) {
-      requirements.push('Er wordt niet voldaan aan de verantwoordingsplicht');
+      requirements.push('Er wordt niet voldaan aan de verantwoordingsplicht.');
     }
 
     if (this.checklistService.getItem(ChecklistService.DPIA_NO)) {
@@ -100,15 +100,15 @@ export class ChecklistComponent {
     }
 
     if (this.checklistService.getItem(ChecklistService.DATA_PROTECTION_OFFICER_NO)) {
-      requirements.push('Er is geen functionaris gegevensbescherming aangewezen');
+      requirements.push('Er is geen functionaris gegevensbescherming aangewezen.');
     }
 
     if (this.checklistService.getItem(ChecklistService.PRIVACY_BY_DESIGN_NO)) {
-      requirements.push('U houdt zich niet aan het wettelijke vereiste "Privacy by Design"');
+      requirements.push('U houdt zich niet aan het wettelijke vereiste "Privacy by Design".');
     }
 
     if (this.checklistService.getItem(ChecklistService.PRIVACY_BY_DEFAULT_NO)) {
-      requirements.push('U houdt zich niet aan het wettelijke vereiste "Privacy by Default"');
+      requirements.push('U houdt zich niet aan het wettelijke vereiste "Privacy by Default".');
     }
 
     if (this.checklistService.getItem(ChecklistService.KNOWLEDGE_DATA_BREACH_NO)) {
@@ -125,7 +125,7 @@ export class ChecklistComponent {
     const suggestions: string[] = [];
 
     if (!this.checklistService.getItem(ChecklistService.INFORMS_SUBJECT_YES)) {
-      suggestions.push('Het is verstandig om uw klanten op de hoogte te stellen van hun rechten');
+      suggestions.push('Het is verstandig om uw klanten op de hoogte te stellen van hun rechten.');
     }
 
     return suggestions;

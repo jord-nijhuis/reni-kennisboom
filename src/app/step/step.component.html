@@ -1,6 +1,7 @@
 <div>
   <h3>{{step.title}}</h3>
 
+  <p *ngIf="step.help !== null" [innerHTML]="step.help" class="help-text"></p>
   <!-- Only one option allowed: radio buttons -->
   <mat-radio-group *ngIf="!step.multiple">
     <mat-radio-button *ngFor="let option of step.options" [value]="option"

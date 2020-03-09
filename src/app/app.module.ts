@@ -13,6 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ChecklistComponent } from './checklist/checklist.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatRadioModule,
     MatCheckboxModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

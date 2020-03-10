@@ -21,7 +21,9 @@ export const STEPS: Step[] = [
         ChecklistService.PROCESSING_INTERNAL,
         'Mijn onderneming, bedrijf of organisatie verwerkt zelfstandig persoonsgegevens.'
       )
-    ]
+    ],
+    'Er worden persoonsgegevevens verwerkt op het moment dat uw informatie verwerkt die over iemand gaat of ' +
+    'te herleiden is naar een persoon. Hierbij kunt u bijvoorbeeld denken aan namen of telefoonnummers.'
   ),
 
   new Step(
@@ -38,7 +40,7 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.AGREEMENT_YES, 'Ja'),
       new Option(ChecklistService.AGREEMENT_NO, 'Nee')
     ],
-    null,
+    'In de verwerkinsovereenkomst sluit u uit dat de externe partij de persoonsgegevens gaat gebruiken voor eigen doeleinden.',
     false,
     checklistService => checklistService.getItem(ChecklistService.PROCESSING_EXTERNAL)
   ),
@@ -151,7 +153,8 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.DATA_PROTECTION_OFFICER_YES, 'Ja'),
       new Option(ChecklistService.DATA_PROTECTION_OFFICER_NO, 'Nee')
     ],
-    null,
+    'De functionaris gegevensbescherming is iemand binnen uw onderneming, bedrijf of organisatie die toezicht houdt op de ' +
+    'naleving van de verplichtingen uit de Algemene Verordening Gegevensbescherming.',
     false,
     checklistService => checklistService.hasItems(ChecklistService.DPIA_YES, ChecklistService.DPIA_NO)
   ),

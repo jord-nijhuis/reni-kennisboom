@@ -79,14 +79,105 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
-    'Kunt u aantonen dat u toestemming heeft van de betrokkenne voor het verwerken van de persoonsgegevens?',
+    'Is de toestemming ondubbelzinnig gegeven?',
     [
-      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_YES, 'Ja'),
-      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_NO, 'Nee')
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_NO, 'Ja'),
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_YES, 'Nee')
+    ],
+    'Er is sprake van ondubbelzinnige toestemming wanneer de gebruiker zelf moet handelen om de toestemming te verlenen. U mag dus ' +
+    'niet vakjes van tevoren aanvinken.',
+    false,
+    checklistService => checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION)
+  ),
+
+  new Step(
+    'Heeft u bij het vragen van de toestemming de gebruiker geïnformeerd?',
+    [
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_INFORMED_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_INFORMED_NO, 'Nee')
+    ],
+    `Om de gebruiker voldoende te informeren, moet u in ieder geval de vollgende dingen hebben genoemd:<ul>
+        <li>De identiteit van uw onderneming, bedrijf of organisatie;</li>
+        <li>Het doel van de verwerking waar de toestemming op ziet;</li>
+        <li>Welke persoonsgegevens uw onderneming, bedrijf of organisatie verwerkt;</li>
+        <li>Dat ze het recht hebben om de toestemming in te trekken.</li>
+    </ul>`,
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_YES,
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_NO
+    )
+  ),
+
+  new Step(
+    'Is de toestemming gegeven voor een specifiek doel?',
+    [
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_SPECIFIC_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_SPECIFIC_NO, 'Nee')
+    ],
+    'Toestemming moet worden gegeven voor een specifiek doeleinde. Als er meerdere doeleinden zijn dan moeten die allemaal ' +
+    'aangegeven worden.',
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_INFORMED_YES,
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_INFORMED_NO
+    )
+  ),
+
+  new Step(
+    'Is de toestemming onder dwang gegeven?',
+    [
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_FORCED_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_FORCED_NO, 'Nee')
+    ],
+    'Toestemming door iemand die onder druk gezet is, is niet geldig. Let hier ook op machtsverhoudingen op bijvoorbeeld de werkvloer.',
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_SPECIFIC_YES,
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_SPECIFIC_NO
+    )
+  ),
+
+  new Step(
+    'Is de betrokkenne jonger dan 16 jaar?',
+    [
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_UNDERAGE_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_UNDERAGE_NO, 'Nee')
     ],
     null,
     false,
-    checklistService => checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION)
+    checklistService => checklistService.hasItems(
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_FORCED_YES,
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_FORCED_NO
+    )
+  ),
+
+  new Step(
+    'Heeft de betrokkenne toestemming van zijn ouders of verzorgers?',
+    [
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PARENTS_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PARENTS_NO, 'Nee')
+    ],
+    'Kinderen jonger dan 16 jaar kunnen zelf niet goed de risico\'s van de verwerking inschatten, daarom hebben zij toestemming ' +
+    'van hun ouders of verzorgers nodig.',
+    false,
+    checklistService => checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_UNDERAGE_YES)
+  ),
+
+
+  new Step(
+    'Kunt u aantonen dat u toestemming heeft van de betrokkenne voor het verwerken van de persoonsgegevens?',
+    [
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_NO, 'Nee')
+    ],
+    null,
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_UNDERAGE_NO,
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_PARENTS_YES,
+      ChecklistService.PROCESSING_ALLOWED_PERMISSION_PARENTS_NO
+    )
   ),
 
   new Step(
@@ -101,8 +192,8 @@ export const STEPS: Step[] = [
     checklistService => {
 
       if (checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION) &&
-        !checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_YES) &&
-        !checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_NO)) {
+        !checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_YES) &&
+        !checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_NO)) {
         return false;
       }
 
@@ -113,8 +204,8 @@ export const STEPS: Step[] = [
         ChecklistService.PROCESSING_ALLOWED_HEALTH,
         ChecklistService.PROCESSING_ALLOWED_GENERAL,
         ChecklistService.PROCESSING_ALLOWED_NO,
-        ChecklistService.PROCESSING_ALLOWED_PERMISSION_YES,
-        ChecklistService.PROCESSING_ALLOWED_PERMISSION_NO
+        ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_YES,
+        ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_NO
       );
     }
   ),
@@ -126,10 +217,10 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.HIGH_RISK_NO, 'Nee')
     ],
     `Onder gegevens met een hoog privacyrisico vallen onder andere: <ul>
-        <li>Uitgebreide persoonlijke aspecten op grond waarvan besluiten worden genomen die gevolgen hebben voor de betrokkenne.</li>
-        <li>Uitgebreide persoonlijke aspecten op grond waarvan profling plaats kan vinden.</li>
-        <li>Bijzondere persoonsgegevens op grote schaal.</li>
-        <li>Strafrechtelijke gegevens.</li>
+        <li>Uitgebreide persoonlijke aspecten op grond waarvan besluiten worden genomen die gevolgen hebben voor de betrokkenne;</li>
+        <li>Uitgebreide persoonlijke aspecten op grond waarvan profling plaats kan vinden;</li>
+        <li>Bijzondere persoonsgegevens op grote schaal;</li>
+        <li>Strafrechtelijke gegevens;</li>
         <li>Gegevens gerelateerd an het volgen van mensen in een publiek toegankelijk gebied.</li>
     </ul>`,
     false,

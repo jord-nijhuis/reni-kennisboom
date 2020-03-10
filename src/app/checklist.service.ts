@@ -45,11 +45,47 @@ export class ChecklistService {
    */
   public static PROCESSING_ALLOWED_PERMISSION = 'PROCESSING_ALLOWED_PERMISSION';
 
+  /** The consent was given by force */
+  public static PROCESSING_ALLOWED_PERMISSION_FORCED_YES = 'PROCESSING_ALLOWED_PERMISSION_FORCED_YES';
+
+  /** The consent was not given by force */
+  public static PROCESSING_ALLOWED_PERMISSION_FORCED_NO = 'PROCESSING_ALLOWED_PERMISSION_FORCED_NO';
+
+  /** The consent was ambiguous */
+  public static PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_YES = 'PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_YES';
+
+  /** The consent was unambiguous */
+  public static PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_NO = 'PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_NO';
+
+  /** The consent was ambiguous */
+  public static PROCESSING_ALLOWED_PERMISSION_INFORMED_YES = 'PROCESSING_ALLOWED_PERMISSION_INFORMED_YES';
+
+  /** The consent was unambiguous */
+  public static PROCESSING_ALLOWED_PERMISSION_INFORMED_NO = 'PROCESSING_ALLOWED_PERMISSION_INFORMED_NO';
+
+  /** The consent was ambiguous */
+  public static PROCESSING_ALLOWED_PERMISSION_SPECIFIC_YES = 'PROCESSING_ALLOWED_PERMISSION_SPECIFIC_YES';
+
+  /** The consent was unambiguous */
+  public static PROCESSING_ALLOWED_PERMISSION_SPECIFIC_NO = 'PROCESSING_ALLOWED_PERMISSION_SPECIFIC_NO';
+
   /** You can proof that consent was given */
-  public static PROCESSING_ALLOWED_PERMISSION_YES = 'PROCESSING_ALLOWED_PERMISSION_YES';
+  public static PROCESSING_ALLOWED_PERMISSION_PROOF_YES = 'PROCESSING_ALLOWED_PERMISSION_PROOF_YES';
 
   /** You cannot proof that consent was given */
-  public static PROCESSING_ALLOWED_PERMISSION_NO = 'PROCESSING_ALLOWED_PERMISSION_NO';
+  public static PROCESSING_ALLOWED_PERMISSION_PROOF_NO = 'PROCESSING_ALLOWED_PERMISSION_PROOF_NO';
+
+  /** The consent was given by an underage person */
+  public static PROCESSING_ALLOWED_PERMISSION_UNDERAGE_YES = 'PROCESSING_ALLOWED_PERMISSION_UNDERAGE_YES';
+
+  /** The consent was not given by an underage person */
+  public static PROCESSING_ALLOWED_PERMISSION_UNDERAGE_NO = 'PROCESSING_ALLOWED_PERMISSION_UNDERAGE_NO';
+
+  /** The parents gave their consent */
+  public static PROCESSING_ALLOWED_PERMISSION_PARENTS_YES = 'PROCESSING_ALLOWED_PERMISSION_PARENTS_YES';
+
+  /** The parents did not give their consent */
+  public static PROCESSING_ALLOWED_PERMISSION_PARENTS_NO = 'PROCESSING_ALLOWED_PERMISSION_PARENTS_NO';
 
   /** Can demonstrate that there is a compliance with the accountability (5 clause 2 GDPR) */
   public static ACCOUNTABILITY_YES = 'ACCOUNTABILITY_YES';

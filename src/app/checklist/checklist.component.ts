@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ChecklistService} from '../checklist.service';
 
 @Component({
@@ -10,7 +10,8 @@ export class ChecklistComponent {
 
   displayedColumns: string[] = ['icon', 'name'];
 
-  constructor(protected checklistService: ChecklistService) { }
+  constructor(protected checklistService: ChecklistService) {
+  }
 
   /**
    * Returns a list of requirements the user has met based on the checklist items
@@ -32,7 +33,27 @@ export class ChecklistComponent {
       requirements.push('U heeft een rechtmatige grondslag voor de verwerking van persoonsgegevens');
     }
 
-    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_YES)) {
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_NO)) {
+      requirements.push('De toestemming is ondubbelzinnig gegeven.');
+    }
+
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_INFORMED_YES)) {
+      requirements.push('U heeft de betrokkenne correct geïnformeerd bij het vragen van toestemming.');
+    }
+
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_SPECIFIC_YES)) {
+      requirements.push('De gevraagde toestemming ziet op een speficiek doel.');
+    }
+
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_FORCED_NO)) {
+      requirements.push('De toestemming is niet onder dwang gegeven.');
+    }
+
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PARENTS_YES)) {
+      requirements.push('De ouders of verzorgers van het kind hebben toestemming gegeven voor de verwerking.');
+    }
+
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_YES)) {
       requirements.push('U kunt aantonen dat u toestemming heeft van de betrokkenne.');
     }
 
@@ -84,10 +105,30 @@ export class ChecklistComponent {
       ChecklistService.PROCESSING_ALLOWED_GENERAL,
       ChecklistService.PROCESSING_ALLOWED_PERMISSION
     )) {
-      requirements.push('U heeft geen rechtmatige grondslag voor de verwerking van persoonsgegevens.');
+      requirements.push('U heeft geen grondslag voor de verwerking van persoonsgegevens.');
     }
 
-    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_NO)) {
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_YES)) {
+      requirements.push('De toestemming is niet ondubbelzinnig gegeven.');
+    }
+
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_INFORMED_NO)) {
+      requirements.push('U heeft de betrokkenne niet correct geïnformeerd bij het vragen van toestemming.');
+    }
+
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_SPECIFIC_NO)) {
+      requirements.push('De gevraagde toestemming ziet niet op een speficiek doel.');
+    }
+
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_FORCED_YES)) {
+      requirements.push('De toestemming is onder dwang gegeven.');
+    }
+
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PARENTS_NO)) {
+      requirements.push('De ouders of verzorgers van het kind hebben geen toestemming gegeven voor de verwerking.');
+    }
+
+    if (this.checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_NO)) {
       requirements.push('U kunt niet aantonen dat u toestemming heeft van de betrokkenne.');
     }
 

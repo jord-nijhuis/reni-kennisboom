@@ -17,4 +17,10 @@
       {{ option.name }}
     </mat-checkbox>
   </div>
+
+  <div class="spacer-parent">
+    <span class="spacer"></span>
+    <button mat-button (click)="performRollback()" *ngIf="showPrevious">Vorige vraag</button>
+    <button mat-raised-button color="primary" (click)="saveOptions()" [disabled]="saveDisabled">Volgende vraag</button>
+  </div>
 </div>

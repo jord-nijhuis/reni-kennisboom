@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import validate = WebAssembly.validate;
 
 @Injectable({
   providedIn: 'root'
@@ -129,10 +130,15 @@ export class ChecklistService {
 
   protected checklist: {[key: string]: boolean} = {};
 
+  protected history: Item[][] = [];
+
   constructor() { }
 
-  public setItem(key: string, value: boolean = true) {
-    this.checklist[key] = value;
+  public setItems(...items: Item[]) {
+
+    this.history.push(items);
+
+    items.forEach((item) => this.checklist[item.key] = item.value);
   }
 
   public getItem(key: string): boolean {
@@ -152,4 +158,23 @@ export class ChecklistService {
 
     keys.forEach(key => this.deleteItem(key));
   }
+
+  public rollback() {
+    const items = this.history.pop();
+
+    if (items === undefined) {
+      return;
+    }
+
+    items.forEach((item) => delete this.checklist[item.key]);
+  }
+
+  hasHistory() {
+    return this.history.length > 0;
+  }
+}
+
+interface Item {
+  key: string;
+  value: boolean;
 }

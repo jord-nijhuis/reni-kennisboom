@@ -100,7 +100,7 @@ export const STEPS: Step[] = [
         <li>De identiteit van uw onderneming, bedrijf of organisatie;</li>
         <li>Het doel van de verwerking waar de toestemming op ziet;</li>
         <li>Welke persoonsgegevens uw onderneming, bedrijf of organisatie verwerkt;</li>
-        <li>Dat ze het recht hebben om de toestemming in te trekken.</li>
+        <li>Dat de betrokkenne het recht heeft om de toestemming in te trekken.</li>
     </ul>`,
     false,
     checklistService => checklistService.hasItems(

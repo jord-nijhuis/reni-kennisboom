@@ -26,3 +26,11 @@ mat-radio-group, #checkboxGroup {
   text-align: justify;
   hyphens: auto;
 }
+
+.spacer-parent {
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

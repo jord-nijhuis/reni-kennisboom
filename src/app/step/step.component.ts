@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Step} from './step';
 import {ChecklistService} from '../checklist.service';
 import {Option} from './option';
@@ -12,7 +12,11 @@ import {Option} from './option';
 /**
  * The StepComponent displays a single step
  */
-export class StepComponent implements OnDestroy {
+export class StepComponent implements OnInit {
+
+  constructor(protected checklistService: ChecklistService) {
+  }
+
 
   /**
    * The data of the step we should be presenting
@@ -20,7 +24,12 @@ export class StepComponent implements OnDestroy {
   @Input()
   step: Step;
 
-  constructor(protected checklistService: ChecklistService) {}
+  checks: { [key: string]: boolean } = {};
+
+  ngOnInit(): void {
+
+    this.step.options.forEach(option => this.checks[option.key] = this.checklistService.getItem(option.key));
+  }
 
   /**
    * Return the checked state of an option
@@ -29,24 +38,7 @@ export class StepComponent implements OnDestroy {
    * @return boolean True if the option is checked, false if not
    */
   isChecked(option: Option): boolean {
-    return this.checklistService.getItem(option.key);
-  }
-
-  /**
-   * Delete all the check list items that could have been set through the given options
-   */
-  deleteChecklistItems() {
-    this.checklistService.deleteItems(this.step.options.map(option => option.key));
-  }
-
-  /**
-   * Gets called when the step is destroyed
-   *
-   * This happens when the user changed the input in a previous step. As such, we should delete the checklist items we have set in this
-   * step.
-   */
-  ngOnDestroy(): void {
-    this.deleteChecklistItems();
+    return this.checks[option.key];
   }
 
   /**
@@ -64,10 +56,44 @@ export class StepComponent implements OnDestroy {
      */
     this.step.options.forEach(o => {
       if (!this.step.multiple || option.exclusive || o.exclusive) {
-        this.checklistService.deleteItem(o.key);
+        this.checks[o.key] = false;
       }
     });
 
-    this.checklistService.setItem(option.key, checked);
+    this.checks[option.key] = checked;
   }
+
+  /**
+   * Save all the checked options to the checklist service
+   *
+   * As a side-effect, this will also navigate to the next step
+   */
+  saveOptions() {
+
+    const items = this.step.options
+      .filter(option => this.isChecked(option))
+      .map(option => {
+        return {
+          key: option.key,
+          value: true
+        };
+      });
+
+    this.checklistService.setItems(...items);
+  }
+
+  performRollback() {
+    this.checklistService.rollback();
+  }
+
+  get showPrevious(): boolean {
+
+    return this.checklistService.hasHistory();
+  }
+
+  get saveDisabled(): boolean {
+
+    return !Object.values<boolean>(this.checks).some(value => value);
+  }
+
 }

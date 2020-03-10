@@ -4,32 +4,12 @@ import {
 } from '@angular/core';
 import {Step} from '../step/step';
 import {ChecklistService} from '../checklist.service';
-import {animate, style, transition, trigger} from '@angular/animations';
+import {Option} from '../step/option';
 
 @Component({
   selector: 'app-steps',
   templateUrl: './steps.component.html',
-  styleUrls: ['./steps.component.scss'],
-  animations: [
-    trigger('fade', [
-      transition(':enter', [
-        style({
-          opacity: 0,
-          height: 0,
-        }),
-        animate('.4s ease-out', style({height: '*'})),
-        animate('.2s ease-out', style({opacity: 1}))
-      ]),
-
-      transition(':leave', [
-        style({
-          opacity: 1,
-          height: '*'
-        }),
-        animate('.2s ease-out', style({opacity: 0})),
-        animate('.4s ease-out', style({height: 0}))
-      ])
-    ])]
+  styleUrls: ['./steps.component.scss']
 })
 /**
  * The steps component renders all the steps
@@ -56,10 +36,16 @@ export class StepsComponent {
    */
   shouldShowStep(step: Step): boolean {
 
+    if (step.options.some((option: Option) => this.checklistService.getItem(option.key))) {
+      return false;
+    }
+
     return step.shouldShow(this.checklistService);
   }
 
   scrollToBottom() {
+
+    return;
 
     const elements = window.document.getElementsByClassName('scroll-target');
 

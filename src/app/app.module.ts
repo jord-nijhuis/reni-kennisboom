@@ -14,13 +14,15 @@ import { ChecklistComponent } from './checklist/checklist.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import { ChecklistsComponent } from './checklists/checklists.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StepComponent,
     StepsComponent,
-    ChecklistComponent
+    ChecklistComponent,
+    ChecklistsComponent
   ],
 
   imports: [

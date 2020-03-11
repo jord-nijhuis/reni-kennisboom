@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Step} from './step';
 import {ChecklistService} from '../checklist.service';
 import {Option} from './option';
+import {fromEvent, Subscription} from 'rxjs';
 
 
 @Component({
@@ -12,11 +13,7 @@ import {Option} from './option';
 /**
  * The StepComponent displays a single step
  */
-export class StepComponent implements OnInit {
-
-  constructor(protected checklistService: ChecklistService) {
-  }
-
+export class StepComponent implements OnInit, OnDestroy {
 
   /**
    * The data of the step we should be presenting
@@ -26,10 +23,25 @@ export class StepComponent implements OnInit {
 
   checks: { [key: string]: boolean } = {};
 
+  private subscription: Subscription | null;
+
+  constructor(protected checklistService: ChecklistService) {
+  }
+
   ngOnInit(): void {
 
     this.step.options.forEach(option => this.checks[option.key] = this.checklistService.getItem(option.key));
+
+    this.subscription = fromEvent(document, 'keydown').subscribe((event: KeyboardEvent) => this.handleKeyInput(event));
   }
+
+  ngOnDestroy(): void {
+
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
 
   /**
    * Return the checked state of an option
@@ -94,6 +106,38 @@ export class StepComponent implements OnInit {
   get saveDisabled(): boolean {
 
     return !Object.values<boolean>(this.checks).some(value => value);
+  }
+
+  /**
+   * This method handles keyboard events, allowing the user to navigate the steps using their keyboard
+   *
+   * The following keys are registered:
+   * - Backspace: Go to the previous step;
+   * - Enter: Go to the next step;
+   * - [0-9]: Toggle option on position X.
+   */
+  handleKeyInput(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === 'Backspace' || !isNaN(+event.key)) {
+      event.preventDefault();
+    }
+
+    if (event.key === 'Enter' && !this.saveDisabled) {
+      this.saveOptions();
+      return;
+    }
+
+    if (event.key === 'Backspace' && this.showPrevious) {
+      this.performRollback();
+      return;
+    }
+
+    const index = parseInt(event.key, 10) - 1;
+    const option = this.step.options[index];
+
+    if (option !== undefined) {
+      this.onOptionChange(option, !this.isChecked(option));
+      return;
+    }
   }
 
 }

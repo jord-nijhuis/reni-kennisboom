@@ -42,21 +42,4 @@ export class StepsComponent {
 
     return step.shouldShow(this.checklistService);
   }
-
-  scrollToBottom() {
-
-    return;
-
-    const elements = window.document.getElementsByClassName('scroll-target');
-
-    if (elements.length === 0) {
-      return;
-    }
-
-    const element = elements.item(elements.length - 1);
-
-    element.scrollIntoView({
-      behavior: 'smooth'
-    });
-  }
 }

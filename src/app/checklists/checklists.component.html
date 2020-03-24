@@ -3,3 +3,8 @@
 <app-checklist [checklist]="unmetChecklist"></app-checklist>
 <app-checklist [checklist]="suggestionsChecklist"></app-checklist>
 <app-checklist [checklist]="metChecklist"></app-checklist>
+
+<div class="spacer-parent" style="margin-top: 5px">
+  <span class="spacer"></span>
+  <button mat-button (click)="performRollback()">Vorige vraag</button>
+</div>

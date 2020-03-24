@@ -5,3 +5,20 @@ td {
 .icon {
   margin-right: 8px;
 }
+
+tr.example-description-row {
+  height: 0;
+}
+
+tr.example-expanded-row:hover {
+  cursor: pointer;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-description {
+  overflow: hidden;
+  display: flex;
+}

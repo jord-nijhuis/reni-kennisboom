@@ -33,14 +33,23 @@ export class Checklist {
 export class ChecklistItem {
   title: string;
 
-  description: string | null;
+  /**
+   * An optional description for more information on the item
+   *
+   * You can use the callback to dynamically generate a description if you so wish
+   */
+  description: string | null | ((checklistService: ChecklistService) => string | null);
 
   /**
    * A callback that should return true if this step should be shown, false if not
    */
   shouldShow: ((checklistService: ChecklistService) => boolean);
 
-  constructor(title: string, description: string | null, shouldShow: (checklistService: ChecklistService) => boolean) {
+  constructor(
+    title: string,
+    description: string | null | ((checklistService: ChecklistService) => string | null),
+    shouldShow: (checklistService: ChecklistService) => boolean
+  ) {
     this.title = title;
     this.description = description;
     this.shouldShow = shouldShow;

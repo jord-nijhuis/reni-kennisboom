@@ -1,20 +1,42 @@
 <div *ngIf="checkedItems.length > 0">
   <h3>{{checklist.title}}</h3>
 
-  <mat-table [dataSource]="checkedItems">
+  <mat-table [dataSource]="checkedItems" multiTemplateDataRows>
     <ng-container matColumnDef="icon">
 
       <th mat-header-cell *matHeaderCellDef> Icon </th>
-      <td mat-cell *matCellDef="let item" class="icon">
+      <td mat-cell *matCellDef="let item" class="icon" style="padding: 0;">
         <mat-icon class="icon" [style.color]="checklist.iconColor">{{checklist.icon}}</mat-icon>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Naam </th>
-      <td mat-cell *matCellDef="let item">{{ item.title }}</td>
+      <td mat-cell *matCellDef="let item" [style.width]="'100%'">
+        {{ item.title }}
+      </td>
     </ng-container>
 
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <ng-container matColumnDef="expand">
+      <td mat-cell *matCellDef="let item" style="padding-right: 0;">
+        <mat-icon [@indicatorRotate]="isExpanded(item) ? 'expanded' : 'collapsed'" *ngIf="getDescription(item) !== null">
+          expand_more
+        </mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <td mat-cell *matCellDef="let item" [attr.colspan]="displayedColumns.length">
+        <div class="example-element-description"
+             [@descriptionExpand]="isExpanded(item) ? 'expanded' : 'collapsed'">
+          <div [innerHTML]="getDescription(item)" style="margin-bottom: 10px"></div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-row *matRowDef="let item; columns: displayedColumns" (click)="toggleExpansion(item)"
+        class="example-element-row"
+        [class.example-expanded-row]="item.description !== null"></tr>
+    <tr mat-row *matRowDef="let item; columns: ['description']" class="example-description-row"></tr>
   </mat-table>
 </div>

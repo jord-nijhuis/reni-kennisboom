@@ -29,4 +29,9 @@ export class ChecklistsComponent {
   performRollback() {
     this.checklistService.rollback();
   }
+
+  get meetsAllRequirements(): boolean {
+
+    return this.metChecklist.items.every(item => item.shouldShow(this.checklistService));
+  }
 }

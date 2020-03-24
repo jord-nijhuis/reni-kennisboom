@@ -1,10 +1,22 @@
+<div>
+  <h2>Resultaat</h2>
 
-<h2>Resultaat</h2>
-<app-checklist [checklist]="unmetChecklist"></app-checklist>
-<app-checklist [checklist]="suggestionsChecklist"></app-checklist>
-<app-checklist [checklist]="metChecklist"></app-checklist>
+  <p *ngIf="meetsAllRequirements" class="conclusion">
+    Gefeliciteerd, uw onderneming, bedrijf of organisatie voldoet aan de vereisten van de Algemene Verordening
+    Persoonsgegevens!
+  </p>
 
-<div class="spacer-parent" style="margin-top: 5px">
-  <span class="spacer"></span>
-  <button mat-button (click)="performRollback()">Vorige vraag</button>
+  <p *ngIf="!meetsAllRequirements" class="conclusion">
+    Helaas, op dit moment voldoet uw onderneming, bedrijf of organisatie nog niet aan de vereisten van de Algemene
+    Verordening Persoonsgegevens. Hieronder kunt u zien wat u nog moet verbeteren om wel aan de vereisten te voldoen.
+  </p>
+
+  <app-checklist [checklist]="unmetChecklist"></app-checklist>
+  <app-checklist [checklist]="suggestionsChecklist"></app-checklist>
+  <app-checklist [checklist]="metChecklist"></app-checklist>
+
+  <div class="spacer-parent" style="margin-top: 5px">
+    <span class="spacer"></span>
+    <button mat-button (click)="performRollback()">Vorige vraag</button>
+  </div>
 </div>

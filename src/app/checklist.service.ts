@@ -165,6 +165,26 @@ export class ChecklistService {
   public static PROCESSING_SPECIAL_NO = 'PROCESSING_SPECIAL_NO';
 
   /**
+   * Processing of special categories of personal data
+   */
+  public static PROCESSING_SPECIAL_LARGE_SCALE_YES = 'PROCESSING_SPECIAL_CORE_ACTIVITY_YES';
+
+  /**
+   * No processing of special categories of personal data
+   */
+  public static PROCESSING_SPECIAL_LARGE_SCALE_NO = 'PROCESSING_SPECIAL_CORE_ACTIVITY_NO';
+
+  /**
+   * Processing of special categories of personal data
+   */
+  public static PROCESSING_TRACKING_LARGE_SCALE_YES = 'PROCESSING_TRACKING_LARGE_SCALE_YES';
+
+  /**
+   * No processing of special categories of personal data
+   */
+  public static PROCESSING_TRACKING_LARGE_SCALE_NO = 'PROCESSING_TRACKING_LARGE_SCALE_NO';
+
+  /**
    * The user has a processing registry (verwerkingsregister)
    */
   public static PROCESSING_REGISTRY_YES = 'PROCESSING_REGISTRY_YES';
@@ -266,11 +286,8 @@ export class ChecklistService {
    */
   public get registryRequired(): boolean {
 
-    if (this.hasItems(ChecklistService.ORGANISATION_LARGE_YES)) {
-      return true;
-    }
-
     return this.hasItems(
+      ChecklistService.ORGANISATION_LARGE_YES,
       ChecklistService.PROCESSING_INCIDENTAL_NO,
       ChecklistService.HIGH_RISK_YES,
       ChecklistService.PROCESSING_SPECIAL_YES
@@ -296,6 +313,29 @@ export class ChecklistService {
 
     if (this.hasItems(ChecklistService.PROCESSING_SPECIAL_YES)) {
       reasons.push(`U verwerkt bijzondere persoonsgegevens.`);
+    }
+
+    return reasons;
+  }
+
+  public get officerRequired(): boolean {
+    // TODO Strafrechtelijke persoonsgegevens
+    return this.hasItems(
+      ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_YES,
+      ChecklistService.PROCESSING_SPECIAL_LARGE_SCALE_YES
+    );
+  }
+
+  public get officerRequiredReasons(): string[] {
+
+    const reasons: string[] = [];
+
+    if (this.hasItems(ChecklistService.PROCESSING_SPECIAL_LARGE_SCALE_YES)) {
+      reasons.push('U verwerkt als kerntaak op grote schaal bijzondere persoonsgegevens.');
+    }
+
+    if (this.hasItems(ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_YES)) {
+      reasons.push('U verwerkt als kerntaak op grote schaal gegevens die invidiuen volgen of diens activiteit in kaart brengen.');
     }
 
     return reasons;

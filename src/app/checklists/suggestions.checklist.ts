@@ -13,6 +13,12 @@ export const CHECKLIST_SUGGESTIONS = new Checklist(
     ),
 
     new ChecklistItem(
+      'Het is soms aangeraden om een functionaris gegevensbescherming aan te stellen.',
+      `Ondanks dat u niet verplicht bent een functionaris gegevensbescherming aan te stellen, kan dit toch handig zijn.`,
+      checklistService => !checklistService.officerRequired && !checklistService.hasItems(ChecklistService.DATA_PROTECTION_OFFICER_YES)
+    ),
+
+    new ChecklistItem(
       'Wees alert dat het uitvoeren van een Data Protection Impact Assessment (DPIA) een periodiek process is.',
       `<p>
         Op het moment dat u nieuwe technologie gaat gebruiken of de persoonsgegevens voor een ander doel verwerkt gaan worden, is er

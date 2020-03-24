@@ -80,6 +80,18 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
+    'Gebeurt het verwerken van de bijzondere persoonsgegevens op grote schaal en is dit tevens een kernactiviteit?',
+    [
+      new Option(ChecklistService.PROCESSING_SPECIAL_LARGE_SCALE_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_SPECIAL_LARGE_SCALE_NO, 'Nee')
+    ],
+    `Bij grote schaal moet u denken aan bijvoorbeeld verwerking van klantgegevens als standaardprocedure. Slechts een enkele verwerking
+    valt hier niet onder.`,
+    false,
+    checklistService => checklistService.getItem(ChecklistService.PROCESSING_SPECIAL_YES)
+  ),
+
+  new Step(
     'Mag uw onderneming, bedrijf of organisatie persoonsgegevens verwerken?',
     [
       new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION, 'U heeft toestemming van de betrokkenne'),
@@ -105,7 +117,11 @@ export const STEPS: Step[] = [
     'Uw onderneming, bedrijf of organisatie mag ' +
     'persoonsgegevens verwerken indien u voldoet aan tenminste één van de volgende voorwaarden. Meerdere antwoorden zijn mogelijk.',
     true,
-    checklistService => checklistService.hasItems(ChecklistService.PROCESSING_SPECIAL_YES, ChecklistService.PROCESSING_SPECIAL_NO)
+    checklistService => checklistService.hasItems(
+      ChecklistService.PROCESSING_SPECIAL_NO,
+      ChecklistService.PROCESSING_SPECIAL_LARGE_SCALE_YES,
+      ChecklistService.PROCESSING_SPECIAL_LARGE_SCALE_NO
+    )
   ),
 
   new Step(
@@ -241,6 +257,18 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
+    'Worden er binnen uw onderneming, bedrijf of organisatie als kernactiviteit op grote schaal individuen gevolgd?',
+    [
+      new Option(ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_NO, 'Nee')
+    ],
+    `Hierbij moet u bijvoorbeeld denken aan cameratoezicht over het profileren van mensen. Onder grote schaal valt bijvoorbeeld de
+    verwerking van klantgegevens als standaardprocedure. Slechts een enkele verwerking valt hier niet onder.`,
+    false,
+    checklistService => checklistService.hasItems(ChecklistService.ACCOUNTABILITY_YES, ChecklistService.ACCOUNTABILITY_NO)
+  ),
+
+  new Step(
     'Werken er uw binnen uw onderneming, bedrijf of organisatie meer dan 250 mensen?',
     [
       new Option(ChecklistService.ORGANISATION_LARGE_YES, 'Ja'),
@@ -248,7 +276,10 @@ export const STEPS: Step[] = [
     ],
     null,
     false,
-    checklistService => checklistService.hasItems(ChecklistService.ACCOUNTABILITY_YES, ChecklistService.ACCOUNTABILITY_NO)
+    checklistService => checklistService.hasItems(
+      ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_YES,
+      ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_NO
+    )
   ),
 
   new Step(
@@ -304,7 +335,11 @@ export const STEPS: Step[] = [
     'De functionaris gegevensbescherming is iemand binnen uw onderneming, bedrijf of organisatie die toezicht houdt op de ' +
     'naleving van de verplichtingen uit de Algemene Verordening Gegevensbescherming.',
     false,
-    checklistService => checklistService.hasItems(ChecklistService.DPIA_YES, ChecklistService.DPIA_NO)
+    checklistService => checklistService.hasItems(
+      ChecklistService.DPIA_YES,
+      ChecklistService.DPIA_NO,
+      ChecklistService.HIGH_RISK_NO,
+      )
   ),
 
   new Step(
@@ -319,8 +354,7 @@ export const STEPS: Step[] = [
     false,
     checklistService => checklistService.hasItems(
       ChecklistService.DATA_PROTECTION_OFFICER_YES,
-      ChecklistService.DATA_PROTECTION_OFFICER_NO,
-      ChecklistService.HIGH_RISK_NO
+      ChecklistService.DATA_PROTECTION_OFFICER_NO
     )
   ),
 

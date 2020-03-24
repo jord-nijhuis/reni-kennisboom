@@ -88,8 +88,14 @@ export const CHECKLIST_UNMET_REQUIREMENTS = new Checklist(
 
     new ChecklistItem(
       'Er is geen functionaris gegevensbescherming aangewezen.',
-      'U bent verplicht een functionaris gegevensbescherming aan te wijzen omdat u persoonsgegevens met een hoog risico verwerkt.',
-      checklistService => checklistService.hasItems(ChecklistService.DATA_PROTECTION_OFFICER_NO)
+      checklistService => {
+
+        const reasons = checklistService.officerRequiredReasons.map(reason => `<li>${reason}</li>`);
+
+        return `U bent verplicht een functionaris gegevensbescherming aan te stellen op grond van de onderstaande redenen: <ul>
+        ${reasons.join('')}</ul>`;
+      },
+      checklistService => checklistService.officerRequired && checklistService.hasItems(ChecklistService.DATA_PROTECTION_OFFICER_NO)
     ),
 
     new ChecklistItem(

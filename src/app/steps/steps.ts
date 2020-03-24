@@ -306,7 +306,10 @@ export const STEPS: Step[] = [
         <li>Bijzondere persoonsgegevens op grote schaal;</li>
         <li>Strafrechtelijke gegevens;</li>
         <li>Gegevens gerelateerd an het volgen van mensen in een publiek toegankelijk gebied.</li>
-    </ul>`,
+    </ul>
+    <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/zelf-doen/data-protection-impact-assessment-dpia#voor-welke-' +
+    'soorten-verwerkingen-is-het-uitvoeren-van-een-dpia-verplicht-6667'}">Klik hier voor een completere lijst van de Autoriteit
+    Persoonsgegevens.</a>`,
     false,
     checklistService => checklistService.hasItems(
       ChecklistService.ORGANISATION_LARGE_YES,
@@ -321,7 +324,7 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.DPIA_YES, 'Ja'),
       new Option(ChecklistService.DPIA_NO, 'Nee')
     ],
-    '(Uitleg DPIA)',
+    `Met een data protection impact assessment onderzoekt u vooraf de privacyrisico's van het verwerken van de persoonsgegevens.`,
     false,
     checklistService => checklistService.getItem(ChecklistService.HIGH_RISK_YES)
   ),

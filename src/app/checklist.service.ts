@@ -174,6 +174,38 @@ export class ChecklistService {
   hasHistory() {
     return this.history.length > 0;
   }
+
+  public get processingGroundsAreValid(): boolean {
+     let valid = false;
+     if (this.hasItems(
+        ChecklistService.PROCESSING_ALLOWED_LAW,
+        ChecklistService.PROCESSING_ALLOWED_HEALTH,
+        ChecklistService.PROCESSING_ALLOWED_GENERAL,
+        ChecklistService.PROCESSING_ALLOWED_NECESSARY,
+      )) {
+        valid = true;
+      }
+
+     if (this.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION)) {
+        // If the user asks for permission, whether processing is allowed depends on other criteria
+        valid = this.hasItems(
+          ChecklistService.PROCESSING_ALLOWED_PERMISSION,
+          ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_NO,
+          ChecklistService.PROCESSING_ALLOWED_PERMISSION_INFORMED_YES,
+          ChecklistService.PROCESSING_ALLOWED_PERMISSION_SPECIFIC_YES,
+          ChecklistService.PROCESSING_ALLOWED_PERMISSION_FORCED_NO,
+          ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_YES
+        );
+
+        // If the user is underage, no permission of the parents results in issues.
+        if (this.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_UNDERAGE_YES) &&
+          this.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PARENTS_NO)) {
+          valid = false;
+        }
+      }
+
+     return valid;
+  }
 }
 
 interface Item {

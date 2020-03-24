@@ -14,50 +14,34 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
 
     new ChecklistItem(
       'U heeft een rechtmatige grondslag voor de verwerking van persoonsgegevens',
-      null,
-      checklistService => checklistService.hasItems(
-        ChecklistService.PROCESSING_ALLOWED_NECESSARY,
-        ChecklistService.PROCESSING_ALLOWED_LAW,
-        ChecklistService.PROCESSING_ALLOWED_HEALTH,
-        ChecklistService.PROCESSING_ALLOWED_GENERAL,
-        ChecklistService.PROCESSING_ALLOWED_PERMISSION
-      )
-    ),
+      (checklistService) => {
 
-    new ChecklistItem(
-      'De toestemming is ondubbelzinnig gegeven.',
-      null,
-      checklistService => checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_NO)
-    ),
+        return `U heeft de volgende toereikende grondslagen aangegeven: <ul>
+            ${checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION) ?
+              '<li>U heeft toestemming van de betrokkene.</li>' : ''}
+            ${checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_NECESSARY) ?
+              '<li>De verwerking is noodzakelijk om de overeenkomst uit te voeren.</li>' : ''}
+            ${checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_LAW) ?
+              '<li>De verwerking is noodzakelijk een wettelijke plicht na te komen.</li>' : ''}
+            ${checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_HEALTH) ?
+              '<li>De verwerking is noodzakelijk ter bescherming van iemands leven of gezondheid.</li>' : ''}
+            ${checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_GENERAL) ?
+              '<li>De verwerking is noodzakelijk voor het algemeen belang of nodig ter behartiging van een gerechtvaardigd belang.</li>'
+              : ''}
+        </ul>
 
-    new ChecklistItem(
-      'U heeft de betrokkenne correct geïnformeerd bij het vragen van toestemming.',
-      null,
-      checklistService => checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_INFORMED_YES)
-    ),
+        ${checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION) ? `
+        <p>
+            Tevens is de toestemming ondubbelzinnig en zonder dwang gegeven voor een specifiek doel, heeft u de gebruiker geïnformeerd en
+            kunt u dit aantonen.
+        </p>` : ''}
 
-    new ChecklistItem(
-      'De gevraagde toestemming ziet op een speficiek doel.',
-      null,
-      checklistService => checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_SPECIFIC_YES)
-    ),
-
-    new ChecklistItem(
-      'De toestemming is niet onder dwang gegeven.',
-      null,
-      checklistService => checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_FORCED_NO)
-    ),
-
-    new ChecklistItem(
-      'De ouders of verzorgers van het kind hebben toestemming gegeven voor de verwerking.',
-      null,
-      checklistService => checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PARENTS_YES)
-    ),
-
-    new ChecklistItem(
-      'U kunt aantonen dat u toestemming heeft van de betrokkenne.',
-      null,
-      checklistService => checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_YES)
+        ${checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_UNDERAGE_YES) ? `<p>
+            De toestemming is gegeven door de ouders is gegeven door de ouders of verzorgers van de betrokkenne. Dit is van belang, omdat
+            de betrokkenne een kind jonger dan 16 jaar is.
+        </p>` : ''}`;
+      },
+      (checklistService) => checklistService.processingGroundsAreValid
     ),
 
     new ChecklistItem(

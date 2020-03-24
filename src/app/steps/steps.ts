@@ -92,7 +92,7 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
-    'Mag uw onderneming, bedrijf of organisatie persoonsgegevens verwerken?',
+    'Wat is de grondslag van de verwerking van de persoonsgegevens?',
     [
       new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION, 'U heeft toestemming van de betrokkenne'),
       new Option(ChecklistService.PROCESSING_ALLOWED_NECESSARY, 'De verwerking is noodzakelijk om de overeenkomst uit te voeren.'),
@@ -102,11 +102,15 @@ export const STEPS: Step[] = [
       ),
       new Option(
         ChecklistService.PROCESSING_ALLOWED_HEALTH,
-        'De verwerking is noodzakelijk ter bescherming van iemands leven of gezondheid'
+        'De verwerking is noodzakelijk ter bescherming van iemands leven of gezondheid (vitale belangen).'
       ),
       new Option(
         ChecklistService.PROCESSING_ALLOWED_GENERAL,
-        'De verwerking is noodzakelijk voor het algemeen belang of nodig ter behartiging van een gerechtvaardigd belang.'
+        'De verwerking is noodzakelijk voor het uitvoeren van een taak van algemeen belang of openbaar gezag.'
+      ),
+      new Option(
+        ChecklistService.PROCESSING_ALLOWED_LEGITIMATE,
+        'De verwerking is noodzakelijk om een gerechtvaardigd belang te behartigen.'
       ),
       new Option(
         ChecklistService.PROCESSING_ALLOWED_NO,
@@ -249,6 +253,7 @@ export const STEPS: Step[] = [
         ChecklistService.PROCESSING_ALLOWED_NECESSARY,
         ChecklistService.PROCESSING_ALLOWED_HEALTH,
         ChecklistService.PROCESSING_ALLOWED_GENERAL,
+        ChecklistService.PROCESSING_ALLOWED_LEGITIMATE,
         ChecklistService.PROCESSING_ALLOWED_NO,
         ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_YES,
         ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_NO

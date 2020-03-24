@@ -59,7 +59,8 @@ export const CHECKLIST_UNMET_REQUIREMENTS = new Checklist(
                   <li>De verwerking is noodzakelijk om de overeenkomst uit te voeren.</li>
                   <li>De verwerking is noodzakelijk een wettelijke plicht na te komen.</li>
                   <li>De verwerking is noodzakelijk ter bescherming van iemands leven of gezondheid.</li>
-                  <li>De verwerking is noodzakelijk voor het algemeen belang of nodig ter behartiging van een gerechtvaardigd belang.</li>
+                  <li>De verwerking is noodzakelijk voor het uitvoeren van een taak van algemeen belang of openbaar gezag.</li>
+                  <li>De verwerking is noodzakelijk om een gerechtvaardigd belang te behartigen.</li>
               </ul>
           </p>
 

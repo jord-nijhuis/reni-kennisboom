@@ -43,6 +43,11 @@ export class ChecklistService {
    */
   public static PROCESSING_ALLOWED_GENERAL = 'PROCESSING_ALLOWED_GENERAL';
 
+  /**
+   * processing is necessary for the purposes of the legitimate interests pursued by the controller or by a third party
+   */
+  public static PROCESSING_ALLOWED_LEGITIMATE = 'PROCESSING_ALLOWED_LEGITIMATE';
+
   /** the data subject has given consent to the processing of his or her personal data for one or more specific purposes
    * (1 clause a GDPR)
    */
@@ -265,6 +270,7 @@ export class ChecklistService {
         ChecklistService.PROCESSING_ALLOWED_LAW,
         ChecklistService.PROCESSING_ALLOWED_HEALTH,
         ChecklistService.PROCESSING_ALLOWED_GENERAL,
+        ChecklistService.PROCESSING_ALLOWED_LEGITIMATE,
         ChecklistService.PROCESSING_ALLOWED_NECESSARY,
       )) {
         valid = true;

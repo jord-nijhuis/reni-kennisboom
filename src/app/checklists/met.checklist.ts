@@ -27,7 +27,10 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
             ${checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_HEALTH) ?
               '<li>De verwerking is noodzakelijk ter bescherming van iemands leven of gezondheid.</li>' : ''}
             ${checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_GENERAL) ?
-              '<li>De verwerking is noodzakelijk voor het algemeen belang of nodig ter behartiging van een gerechtvaardigd belang.</li>'
+              '<li>De verwerking is noodzakelijk voor het uitvoeren van een taak van algemeen belang of openbaar gezag.</li>'
+              : ''}
+            ${checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_LEGITIMATE) ?
+              '<li>De verwerking is noodzakelijk om een gerechtvaardigd belang te behartigen.</li>'
               : ''}
         </ul>
 

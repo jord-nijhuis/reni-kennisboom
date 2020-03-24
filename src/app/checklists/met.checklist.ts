@@ -76,6 +76,17 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
     ),
 
     new ChecklistItem(
+      'U houdt een verwerkingsregister bij.',
+      checklistService => {
+
+        const reasons = checklistService.registryReasons.map(reason => `<li>${reason}</li>`);
+
+        return `U bent verplicht een verwerkingsregister bij te houden vanwege de volgende redenen: <ul>${reasons.join('')}</ul>`;
+      },
+      checklistService => checklistService.registryRequired && checklistService.hasItems(ChecklistService.PROCESSING_REGISTRY_YES)
+    ),
+
+    new ChecklistItem(
       'U bent zich ervan bewust hoe u moet handelen ten tijde van een datalek.',
       null,
       checklistService => checklistService.hasItems(ChecklistService.KNOWLEDGE_DATA_BREACH_YES)

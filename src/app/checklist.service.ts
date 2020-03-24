@@ -130,6 +130,46 @@ export class ChecklistService {
 
   public static INFORMS_SUBJECT_NO = 'INFORMS_SUBJECT_NO';
 
+  /**
+   * When the organisation has more > 250 employees
+   */
+  public static ORGANISATION_LARGE_YES = 'ORGANISATION_LARGE_YES';
+
+  /**
+   * When the organisation has < 250 employees
+   */
+  public static ORGANISATION_LARGE_NO = 'ORGANISATION_LARGE_NO';
+
+  /**
+   * The processing only happens incidentally
+   */
+  public static PROCESSING_INCIDENTAL_YES = 'PROCESSING_INCIDENTAL_YES';
+
+  /**
+   * The processing happens coincidental
+   */
+  public static PROCESSING_INCIDENTAL_NO = 'PROCESSING_INCIDENTAL_NO';
+
+  /**
+   * Processing of special categories of personal data
+   */
+  public static PROCESSING_SPECIAL_YES = 'PROCESSING_SPECIAL_YES';
+
+  /**
+   * No processing of special categories of personal data
+   */
+  public static PROCESSING_SPECIAL_NO = 'PROCESSING_SPECIAL_NO';
+
+  /**
+   * The user has a processing registry (verwerkingsregister)
+   */
+  public static PROCESSING_REGISTRY_YES = 'PROCESSING_REGISTRY_YES';
+
+  /**
+   * The user does not have a processing registry
+   */
+  public static PROCESSING_REGISTRY_NO = 'PROCESSING_REGISTRY_NO';
+
   protected checklist: {[key: string]: boolean} = {};
 
   protected history: Item[][] = [];
@@ -205,6 +245,46 @@ export class ChecklistService {
       }
 
      return valid;
+  }
+
+  /**
+   * Whether the user is required to maintain a registry of all processing
+   */
+  public get registryRequired(): boolean {
+
+    if (this.hasItems(ChecklistService.ORGANISATION_LARGE_YES)) {
+      return true;
+    }
+
+    return this.hasItems(
+      ChecklistService.PROCESSING_INCIDENTAL_NO,
+      ChecklistService.HIGH_RISK_YES,
+      ChecklistService.PROCESSING_SPECIAL_YES
+    );
+  }
+
+  public get registryReasons(): string[] {
+
+    const reasons: string[] = [];
+
+    if (this.hasItems(ChecklistService.ORGANISATION_LARGE_YES)) {
+      reasons.push(`Omdat uw onderneming, bedrijf of organisatie meer dan 250 werknemers heeft, bent u verplicht een verwerkingsregister
+        bij te houden.`);
+    }
+
+    if (this.hasItems(ChecklistService.PROCESSING_INCIDENTAL_NO)) {
+      reasons.push(`De verwerkingen zijn niet incidenteel.`);
+    }
+
+    if (this.hasItems(ChecklistService.HIGH_RISK_YES)) {
+      reasons.push(`U verwerkt persoonsgegevens met een hoog privacyrisico.`);
+    }
+
+    if (this.hasItems(ChecklistService.PROCESSING_SPECIAL_YES)) {
+      reasons.push(`U verwerkt bijzondere persoonsgegevens.`);
+    }
+
+    return reasons;
   }
 }
 

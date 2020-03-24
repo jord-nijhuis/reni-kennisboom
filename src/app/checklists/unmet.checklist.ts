@@ -108,6 +108,17 @@ export const CHECKLIST_UNMET_REQUIREMENTS = new Checklist(
     ),
 
     new ChecklistItem(
+      'U houdt geen verwerkingsregister bij.',
+      checklistService => {
+
+        const reasons = checklistService.registryReasons.map(reason => `<li>${reason}</li>`);
+
+        return `U bent verplicht een verwerkingsregister bij te houden vanwege de volgende redenen: <ul>${reasons.join('')}</ul>`;
+      },
+      checklistService => checklistService.registryRequired && checklistService.hasItems(ChecklistService.PROCESSING_REGISTRY_NO)
+    ),
+
+    new ChecklistItem(
       'U bent zich er niet van bewust hoe u moet handelen ten tijde van een datalek.',
       null,
       checklistService => checklistService.hasItems(ChecklistService.KNOWLEDGE_DATA_BREACH_NO)

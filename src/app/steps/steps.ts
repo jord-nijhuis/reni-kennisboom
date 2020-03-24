@@ -53,6 +53,33 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
+    'Verwerkt u onderneming, bedrijf of organisatie bijzondere persoonsgegevens?',
+    [
+      new Option(ChecklistService.PROCESSING_SPECIAL_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_SPECIAL_NO, 'Nee')
+    ],
+    `Onder bijzondere persoonsgegevens valt het volgende:<ul>
+        <li>Gegevens over het ras of de etnische afkomst van de betrokkenne.</li>
+        <li>Gegevens over politieke opvattingen.</li>
+        <li>Gegevens over religieuze of levensbeschouwende opvattingen.</li>
+        <li>Gegevens waaruit blijkt of de betrokkenne lid is van een vakvereniging.</li>
+        <li>Gegevens over de gezondheid van de betrokkenne.</li>
+        <li>Genetische gegevens.</li>
+        <li>Biometrische gegevens ter unieke identificatie van een persoon.</li>
+    </ul><br>
+
+    <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/algemene-informatie-avg/mag-u-persoonsgegevens-' +
+    'verwerken#wat-verstaat-de-avg-onder-bijzondere-persoonsgegevens-6339'}">Klik hier voor meer informatie van de Autoriteit
+    Persoonsgegevens over bijzondere persoonsgegevens.</a></ul>`,
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.PROCESSING_INTERNAL,
+      ChecklistService.AGREEMENT_YES,
+      ChecklistService.AGREEMENT_NO
+    )
+  ),
+
+  new Step(
     'Mag uw onderneming, bedrijf of organisatie persoonsgegevens verwerken?',
     [
       new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION, 'U heeft toestemming van de betrokkenne'),
@@ -78,11 +105,7 @@ export const STEPS: Step[] = [
     'Uw onderneming, bedrijf of organisatie mag ' +
     'persoonsgegevens verwerken indien u voldoet aan tenminste één van de volgende voorwaarden. Meerdere antwoorden zijn mogelijk.',
     true,
-    checklistService => checklistService.hasItems(
-      ChecklistService.PROCESSING_INTERNAL,
-      ChecklistService.AGREEMENT_YES,
-      ChecklistService.AGREEMENT_NO
-    )
+    checklistService => checklistService.hasItems(ChecklistService.PROCESSING_SPECIAL_YES, ChecklistService.PROCESSING_SPECIAL_NO)
   ),
 
   new Step(
@@ -218,6 +241,29 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
+    'Werken er uw binnen uw onderneming, bedrijf of organisatie meer dan 250 mensen?',
+    [
+      new Option(ChecklistService.ORGANISATION_LARGE_YES, 'Ja'),
+      new Option(ChecklistService.ORGANISATION_LARGE_NO, 'Nee')
+    ],
+    null,
+    false,
+    checklistService => checklistService.hasItems(ChecklistService.ACCOUNTABILITY_YES, ChecklistService.ACCOUNTABILITY_NO)
+  ),
+
+  new Step(
+    'Is de verwerking van persoonsgegevens incidenteel?',
+    [
+      new Option(ChecklistService.PROCESSING_INCIDENTAL_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_INCIDENTAL_NO, 'Nee')
+    ],
+    `In praktijk is de verwerking van persoonsgegevens zelden incidenteel. Als u het niet zeker weet, dan is het antwoord op deze vraag
+    hoogstwaarschijnlijk "nee".`,
+    false,
+    checklistService => checklistService.hasItems(ChecklistService.ORGANISATION_LARGE_NO)
+  ),
+
+  new Step(
     'Worden er binnen uw onderneming, bedrijf of organisatie gegevens verwerkt met een hoog privacyrisico?',
     [
       new Option(ChecklistService.HIGH_RISK_YES, 'Ja'),
@@ -231,7 +277,11 @@ export const STEPS: Step[] = [
         <li>Gegevens gerelateerd an het volgen van mensen in een publiek toegankelijk gebied.</li>
     </ul>`,
     false,
-    checklistService => checklistService.hasItems(ChecklistService.ACCOUNTABILITY_YES, ChecklistService.ACCOUNTABILITY_NO)
+    checklistService => checklistService.hasItems(
+      ChecklistService.ORGANISATION_LARGE_YES,
+      ChecklistService.PROCESSING_INCIDENTAL_NO,
+      ChecklistService.PROCESSING_INCIDENTAL_YES
+    )
   ),
 
   new Step(
@@ -290,6 +340,23 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
+    'Houdt uw onderneming, bedrijf of organisatie een verwerkingsregister bij?',
+    [
+      new Option(ChecklistService.PROCESSING_REGISTRY_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_REGISTRY_NO, 'Nee')
+    ],
+    `In het verwerkingsregister bevat informatie over de persoonsgegevens die u verwerkt. <br>
+    <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/algemene-informatie-avg/verantwoordingsplicht#' +
+    'wat-moet-er-in-het-verwerkingsregister-staan-7193'}">Klik hier voor meer informatie van de Autoriteit Persoonsgegevens over de inhoud
+    van het verwerkingsregister</a>`,
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.PRIVACY_BY_DEFAULT_YES,
+      ChecklistService.PRIVACY_BY_DEFAULT_NO
+    )
+  ),
+
+  new Step(
     'Is uw onderneming, bedrijf of organisatie zich ervan bewust hoe zij moet handelen ten tijde van een datalek?',
     [
       new Option(ChecklistService.KNOWLEDGE_DATA_BREACH_YES, 'Ja'),
@@ -298,8 +365,8 @@ export const STEPS: Step[] = [
     'Korte uitleg betreffende verschil kleine datalek en ernstige lek.',
     false,
     checklistService => checklistService.hasItems(
-      ChecklistService.PRIVACY_BY_DEFAULT_YES,
-      ChecklistService.PRIVACY_BY_DEFAULT_NO
+      ChecklistService.PROCESSING_REGISTRY_YES,
+      ChecklistService.PROCESSING_REGISTRY_NO
     )
   ),
 

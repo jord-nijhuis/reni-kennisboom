@@ -227,13 +227,13 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
-    'Voldoet uw onderneming, bedrijf of organisatie aan de verantwoordingsplicht?',
+    'Worden er binnen uw onderneming, bedrijf of organisatie als kernactiviteit op grote schaal individuen gevolgd?',
     [
-      new Option(ChecklistService.ACCOUNTABILITY_YES, 'Ja'),
-      new Option(ChecklistService.ACCOUNTABILITY_NO, 'Nee')
+      new Option(ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_YES, 'Ja'),
+      new Option(ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_NO, 'Nee')
     ],
-    'Uw onderneming, bedrijf of organisatie voldoet aan de verantwoordingsplicht indien u een register bijhoudt. In dit register ' +
-    'staat welke persoonsgegevens u verwerkt, waarom u deze gegevens verwerkt en met welke andere organisaties u deze gegevens deelt.',
+    `Hierbij moet u bijvoorbeeld denken aan cameratoezicht over het profileren van mensen. Onder grote schaal valt bijvoorbeeld de
+    verwerking van klantgegevens als standaardprocedure. Slechts een enkele verwerking valt hier niet onder.`,
     false,
     checklistService => {
 
@@ -254,18 +254,6 @@ export const STEPS: Step[] = [
         ChecklistService.PROCESSING_ALLOWED_PERMISSION_PROOF_NO
       );
     }
-  ),
-
-  new Step(
-    'Worden er binnen uw onderneming, bedrijf of organisatie als kernactiviteit op grote schaal individuen gevolgd?',
-    [
-      new Option(ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_YES, 'Ja'),
-      new Option(ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_NO, 'Nee')
-    ],
-    `Hierbij moet u bijvoorbeeld denken aan cameratoezicht over het profileren van mensen. Onder grote schaal valt bijvoorbeeld de
-    verwerking van klantgegevens als standaardprocedure. Slechts een enkele verwerking valt hier niet onder.`,
-    false,
-    checklistService => checklistService.hasItems(ChecklistService.ACCOUNTABILITY_YES, ChecklistService.ACCOUNTABILITY_NO)
   ),
 
   new Step(
@@ -452,6 +440,65 @@ export const STEPS: Step[] = [
     checklistService => checklistService.hasItems(
       ChecklistService.DATA_BREACH_REGISTRY_YES,
       ChecklistService.DATA_BREACH_REGISTRY_NO
+    )
+  ),
+
+  new Step(
+    'Is uw onderneming, bedrijf of organisatie aangesloten bij een gedragscode?',
+    [
+      new Option(ChecklistService.CODE_OF_CONDUCT_YES, 'Ja'),
+      new Option(ChecklistService.CODE_OF_CONDUCT_NO, 'Nee')
+    ],
+    `In een gedragscode worden de algemene normen van de AVG geconcretiseerd voor alle deelnemers.
+    <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/zelf-doen/avg-gedragscode'}">Klik hier voor meer informatie van
+    de Autoriteit Persoonsgegevens.</a>"`,
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.INFORMS_SUBJECT_YES,
+      ChecklistService.INFORMS_SUBJECT_NO
+    )
+  ),
+
+  new Step(
+    'Heeft uw onderneming, bedrijf of organisatie aangesloten speciale AVG-certificering behaald?',
+    [
+      new Option(ChecklistService.CERTIFICATE_YES, 'Ja'),
+      new Option(ChecklistService.CERTIFICATE_NO, 'Nee')
+    ],
+    null,
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.CODE_OF_CONDUCT_YES,
+      ChecklistService.CODE_OF_CONDUCT_NO
+    )
+  ),
+
+  new Step(
+    'Heeft uw onderneming, bedrijf of organisatie een specifiek ICT-beveiligingsbeleid voor de persoonsgegevens?',
+    [
+      new Option(ChecklistService.IT_SECURITY_YES, 'Ja'),
+      new Option(ChecklistService.IT_SECURITY_NO, 'Nee')
+    ],
+    null,
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.CERTIFICATE_YES,
+      ChecklistService.CERTIFICATE_NO
+    )
+  ),
+
+  new Step(
+    `Legt uw onderneming, bedrijf of organisatie verantwoording af over de verwerking van persoonsgegevens in een (speciaal daarvoor
+     bestemd) jaarverslag?`,
+    [
+      new Option(ChecklistService.ANNUAL_REPORT_YES, 'Ja'),
+      new Option(ChecklistService.ANNUAL_REPORT_NO, 'Nee')
+    ],
+    null,
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.IT_SECURITY_YES,
+      ChecklistService.IT_SECURITY_NO
     )
   ),
 ];

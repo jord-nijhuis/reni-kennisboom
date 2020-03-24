@@ -75,12 +75,6 @@ export const CHECKLIST_UNMET_REQUIREMENTS = new Checklist(
     ),
 
     new ChecklistItem(
-      'Er wordt niet voldaan aan de verantwoordingsplicht.',
-      null,
-      checklistService => checklistService.hasItems(ChecklistService.ACCOUNTABILITY_NO)
-    ),
-
-    new ChecklistItem(
       'Er is geen data protection impact assessment (DPIA) uitgevoerd.',
       'U bent verplicht een data protection impact assessment uit te voeren omdat u persoonsgegevens met een hoog risico verwerkt.',
       checklistService => checklistService.hasItems(ChecklistService.DPIA_NO)

@@ -30,6 +30,31 @@ export const CHECKLIST_SUGGESTIONS = new Checklist(
         Protection Impact Assessment uit te voeren.
       </p>`,
       checklistService => checklistService.hasItems(ChecklistService.DPIA_YES)
+    ),
+
+    new ChecklistItem(
+      'U kunt zich niet aansluiten bij een gedragscode.',
+      `In een gedragscode worden de algemene normen van de AVG geconcretiseerd voor alle deelnemers.
+        <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/zelf-doen/avg-gedragscode'}">Klik hier voor meer informatie van
+        de Autoriteit Persoonsgegevens.</a>"`,
+      checklistService => checklistService.hasItems(ChecklistService.CODE_OF_CONDUCT_NO)
+    ),
+
+    new ChecklistItem(
+      'U kunt speciale AVG-certificering behalen.',
+      null,
+      checklistService => checklistService.hasItems(ChecklistService.CERTIFICATE_NO)
+    ),
+
+    new ChecklistItem(
+      'U kunt een een specifiek ICT-beveiligingsbeleid voor de persoonsgegevens opstellen.',
+      null,
+      checklistService => checklistService.hasItems(ChecklistService.IT_SECURITY_NO)
+    ),
+    new ChecklistItem(
+      'U kunt verantwoording afleggen over de verwerking van persoonsgegevens in een (speciaal daarvoor bestemd) jaarverslag.',
+      null,
+      checklistService => checklistService.hasItems(ChecklistService.ANNUAL_REPORT_NO)
     )
   ]
 );

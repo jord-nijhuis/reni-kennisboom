@@ -46,12 +46,6 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
     ),
 
     new ChecklistItem(
-      'Er wordt voldaan aan de verantwoordingsplicht.',
-      null,
-      checklistService => checklistService.hasItems(ChecklistService.ACCOUNTABILITY_YES)
-    ),
-
-    new ChecklistItem(
       'Er is een data protection impact assessment (DPIA) uitgevoerd.',
       'Omdat u persoonsgegvens met een hoog privacyrisico verwerkt, bent u verplicht een data protection impact assessment te doen.',
       checklistService => checklistService.hasItems(ChecklistService.DPIA_YES)
@@ -117,9 +111,32 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
     ),
 
     new ChecklistItem(
-      'U stelt uw klaneten op de hoogte van hun rechten.',
+      'U stelt uw klanten op de hoogte van hun rechten.',
       'Ondanks dat het niet verplicht is, is het verstandig om de betrokkenne op zijn rechten te wijzen.',
       checklistService => checklistService.hasItems(ChecklistService.INFORMS_SUBJECT_YES)
     ),
+
+    new ChecklistItem(
+      'U bent aangesloten bij een gedragscode.',
+      null,
+      checklistService => checklistService.hasItems(ChecklistService.CODE_OF_CONDUCT_YES)
+    ),
+
+    new ChecklistItem(
+      'U heeft speciale AVG-certificering behaald.',
+      null,
+      checklistService => checklistService.hasItems(ChecklistService.CERTIFICATE_YES)
+    ),
+
+    new ChecklistItem(
+      'U heeft een specifiek ICT-beveiligingsbeleid voor de persoonsgegevens.',
+      null,
+      checklistService => checklistService.hasItems(ChecklistService.IT_SECURITY_YES)
+    ),
+    new ChecklistItem(
+      'U legt verantwoording af over de verwerking van persoonsgegevens in een (speciaal daarvoor bestemd) jaarverslag.',
+      null,
+      checklistService => checklistService.hasItems(ChecklistService.ANNUAL_REPORT_YES)
+    )
   ]
 );

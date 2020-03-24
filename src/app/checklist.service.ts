@@ -90,12 +90,6 @@ export class ChecklistService {
   /** The parents did not give their consent */
   public static PROCESSING_ALLOWED_PERMISSION_PARENTS_NO = 'PROCESSING_ALLOWED_PERMISSION_PARENTS_NO';
 
-  /** Can demonstrate that there is a compliance with the accountability (5 clause 2 GDPR) */
-  public static ACCOUNTABILITY_YES = 'ACCOUNTABILITY_YES';
-
-  /** Cannot demonstrate that there is a compliance with the accountability (5 clause 2 GDPR) */
-  public static ACCOUNTABILITY_NO = 'ACCOUNTABILITY_NO';
-
   /** Processing contains high risk data (35 GDPR) */
   public static HIGH_RISK_YES = 'HIGH_RISK_YES';
 
@@ -133,6 +127,22 @@ export class ChecklistService {
   public static INFORMS_SUBJECT_YES = 'INFORMS_SUBJECT_YES';
 
   public static INFORMS_SUBJECT_NO = 'INFORMS_SUBJECT_NO';
+
+  public static CODE_OF_CONDUCT_YES = 'CODE_OF_CONDUCT_YES';
+
+  public static CODE_OF_CONDUCT_NO = 'CODE_OF_CONDUCT_NO';
+
+  public static ANNUAL_REPORT_YES = 'ANNUAL_REPORT_YES';
+
+  public static ANNUAL_REPORT_NO = 'ANNUAL_REPORT_NO';
+
+  public static CERTIFICATE_YES = 'CERTIFICATE_YES';
+
+  public static CERTIFICATE_NO = 'CERTIFICATE_NO';
+
+  public static IT_SECURITY_YES = 'IT_SECURITY_YES';
+
+  public static IT_SECURITY_NO = 'IT_SECURITY_NO';
 
   /**
    * When the organisation has more > 250 employees

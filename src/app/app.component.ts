@@ -24,6 +24,6 @@ export class AppComponent {
    */
   shouldShowChecklist(): boolean {
 
-    return this.checklistService.hasItems(ChecklistService.INFORMS_SUBJECT_YES, ChecklistService.INFORMS_SUBJECT_NO);
+    return this.checklistService.hasItems(ChecklistService.ANNUAL_REPORT_YES, ChecklistService.ANNUAL_REPORT_NO);
   }
 }

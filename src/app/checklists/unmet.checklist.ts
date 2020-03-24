@@ -122,6 +122,12 @@ export const CHECKLIST_UNMET_REQUIREMENTS = new Checklist(
       'U bent zich er niet van bewust hoe u moet handelen ten tijde van een datalek.',
       null,
       checklistService => checklistService.hasItems(ChecklistService.KNOWLEDGE_DATA_BREACH_NO)
-    )
+    ),
+
+    new ChecklistItem(
+      'U heeft geen datalekregister.',
+      null,
+      checklistService => checklistService.hasItems(ChecklistService.DATA_BREACH_REGISTRY_NO)
+    ),
   ]
 );

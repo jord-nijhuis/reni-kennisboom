@@ -371,6 +371,20 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
+    'Heeft uw onderneming, bedrijf of organisatie een datalekregister?',
+    [
+      new Option(ChecklistService.DATA_BREACH_REGISTRY_YES, 'Ja'),
+      new Option(ChecklistService.DATA_BREACH_REGISTRY_NO, 'Nee')
+    ],
+    null,
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.KNOWLEDGE_DATA_BREACH_YES,
+      ChecklistService.KNOWLEDGE_DATA_BREACH_NO
+    )
+  ),
+
+  new Step(
     'Stelt uw onderneming, bedrijf of organisatie stelt haar klanten op de hoogte van hun rechten?',
     [
       new Option(ChecklistService.INFORMS_SUBJECT_YES, 'Ja'),
@@ -379,8 +393,8 @@ export const STEPS: Step[] = [
     'Dit kan door uw klanten te wijzen of de relevante bepalingen in de AVG of met een privacyverklaring.',
     false,
     checklistService => checklistService.hasItems(
-      ChecklistService.KNOWLEDGE_DATA_BREACH_YES,
-      ChecklistService.KNOWLEDGE_DATA_BREACH_NO
+      ChecklistService.DATA_BREACH_REGISTRY_YES,
+      ChecklistService.DATA_BREACH_REGISTRY_NO
     )
   ),
 ];

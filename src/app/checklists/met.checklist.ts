@@ -93,6 +93,12 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
     ),
 
     new ChecklistItem(
+      'U heeft een datalekregister.',
+      null,
+      checklistService => checklistService.hasItems(ChecklistService.DATA_BREACH_REGISTRY_YES)
+    ),
+
+    new ChecklistItem(
       'U stelt uw klaneten op de hoogte van hun rechten.',
       'Ondanks dat het niet verplicht is, is het verstandig om de betrokkenne op zijn rechten te wijzen.',
       checklistService => checklistService.hasItems(ChecklistService.INFORMS_SUBJECT_YES)

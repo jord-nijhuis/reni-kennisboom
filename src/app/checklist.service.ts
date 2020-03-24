@@ -170,6 +170,16 @@ export class ChecklistService {
    */
   public static PROCESSING_REGISTRY_NO = 'PROCESSING_REGISTRY_NO';
 
+  /**
+   * The user has a data breach registry
+   */
+  public static DATA_BREACH_REGISTRY_YES = 'DATA_BREACH_REGISTRY_YES';
+
+  /**
+   * The user does not have a data breach registry
+   */
+  public static DATA_BREACH_REGISTRY_NO = 'DATA_BREACH_REGISTRY_NO';
+
   protected checklist: {[key: string]: boolean} = {};
 
   protected history: Item[][] = [];

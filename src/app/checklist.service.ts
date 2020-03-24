@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import validate = WebAssembly.validate;
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChecklistService {
+
+  /** When the checklist is started */
+  public static START = 'START';
 
   /** When there is no processing at all */
   public static PROCESSING_NONE = 'PROCESSING_NONE';

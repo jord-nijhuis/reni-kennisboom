@@ -1,9 +1,9 @@
 #main-card {
 
-  margin: 32px 0;
+  margin: 32px 0 10px 0;
   width: 100%;
-  max-width: 720px;
 }
+
 
 mat-card-content {
   padding: 10px;
@@ -12,4 +12,18 @@ mat-card-content {
 #container {
   display: flex;
   justify-content: center;
+}
+
+#wrapper {
+  max-width: 720px;
+}
+
+.footer {
+  color: #B0BEC5;
+  text-align: center;
+  font-size: 11px;
+}
+
+.footer > a {
+  color: #90A4AE;
 }

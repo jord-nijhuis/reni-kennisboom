@@ -1,6 +1,3 @@
-
-<mat-divider inset="true"></mat-divider>
-
 <div *ngFor="let step of steps">
   <app-step [step]="step" *ngIf="shouldShowStep(step)" class="scroll-target"></app-step>
 </div>

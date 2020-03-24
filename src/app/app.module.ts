@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import { ChecklistsComponent } from './checklists/checklists.component';
+import { StartComponent } from './start/start.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ChecklistsComponent } from './checklists/checklists.component';
     StepComponent,
     StepsComponent,
     ChecklistComponent,
-    ChecklistsComponent
+    ChecklistsComponent,
+    StartComponent
   ],
 
   imports: [

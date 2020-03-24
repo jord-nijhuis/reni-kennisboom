@@ -14,6 +14,9 @@ export class AppComponent {
 
   constructor(protected checklistService: ChecklistService) {}
 
+  shouldShowStart(): boolean {
+    return !this.checklistService.hasItems(ChecklistService.START);
+  }
   /**
    * Whether we should show the checklist
    *

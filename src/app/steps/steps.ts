@@ -23,7 +23,9 @@ export const STEPS: Step[] = [
       )
     ],
     'Er worden persoonsgegevevens verwerkt op het moment dat uw informatie verwerkt die over iemand gaat of ' +
-    'te herleiden is naar een persoon. Hierbij kunt u bijvoorbeeld denken aan namen of telefoonnummers.'
+    'te herleiden is naar een persoon. Hierbij kunt u bijvoorbeeld denken aan namen of telefoonnummers.',
+    null,
+    checklistService => checklistService.hasItems(ChecklistService.START)
   ),
 
   new Step(

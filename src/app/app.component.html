@@ -3,19 +3,24 @@
 </mat-toolbar>
 
 <div id="container">
-  <mat-card id="main-card">
-    <mat-card-title>
-      Titel
-    </mat-card-title>
+  <div id="wrapper">
+    <mat-card id="main-card">
+      <mat-card-title>
+        Hulp bij het verwerken van persoonsgegevens
+      </mat-card-title>
 
-    <mat-card-content>
-      <p>
-        Inleidende tekst
-      </p>
+      <mat-card-content>
+        <app-start *ngIf="shouldShowStart()"></app-start>
 
-      <app-steps [steps]="steps"></app-steps>
+        <app-steps [steps]="steps"></app-steps>
 
-      <app-checklists *ngIf="shouldShowChecklist()"></app-checklists>
-    </mat-card-content>
-  </mat-card>
+        <app-checklists *ngIf="shouldShowChecklist()"></app-checklists>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="footer">
+      Dit systeem is gebouwd in 2020 voor het vak Recht & Informatiemanagement van de Rijksuniversiteit Groningen. <br>
+      <a href="https://github.com/jord-nijhuis/avg-kennisboom" target="_blank">De broncode is beschikbaar op Github.</a>
+    </div>
+  </div>
 </div>

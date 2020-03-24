@@ -42,7 +42,12 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.AGREEMENT_YES, 'Ja'),
       new Option(ChecklistService.AGREEMENT_NO, 'Nee')
     ],
-    'In de verwerkinsovereenkomst sluit u uit dat de externe partij de persoonsgegevens gaat gebruiken voor eigen doeleinden.',
+    `In de verwerkinsovereenkomst sluit u uit dat de externe partij de persoonsgegevens gaat gebruiken voor eigen doeleinden. <br><br>
+
+        <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/algemene-informatie-avg/verwerkers#wanneer-moet-' +
+          'ik-een-verwerkersovereenkomst-afsluiten-7101'}">
+            Klik hier voor meer informatie van de Autoriteit Persoonsgegevens over de verwerkingsovereenkomst.
+        </a>`,
     false,
     checklistService => checklistService.getItem(ChecklistService.PROCESSING_EXTERNAL)
   ),
@@ -253,13 +258,14 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
-    'Houdt uw onderneming, bedrijf of organisatie zich aan het wettelijke vereiste “Privacy by Design”?',
+    'Houdt uw onderneming, bedrijf of organisatie zich aan privacy by design?',
     [
       new Option(ChecklistService.PRIVACY_BY_DESIGN_YES, 'Ja'),
       new Option(ChecklistService.PRIVACY_BY_DESIGN_NO, 'Nee')
     ],
-    `Dit betekent dat er in een vroeg stadium zowel technisch als organisatorisch een zorgvuldige omgang met persoonsgegevens
-    moet zijn. Een voorbeeld hiervan is dat u geen gegevens opgevraagd bij een klant die u niet nodig heeft.`,
+    `Om hieraan te voldoen moet er al in een vroeg stadium zowel technisch als organisatorisch rekening gehouden worden met een
+    zorgvuldige omgang van persoonsgegevens: gegevensbescherming zit verwerkt in het design. Een voorbeeld hiervan is dat u geen gegevens
+    verwerkt van de betrokkenne die u niet nodig heeft.`,
     false,
     checklistService => checklistService.hasItems(
       ChecklistService.DATA_PROTECTION_OFFICER_YES,
@@ -269,12 +275,13 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
-    'Houdt uw onderneming, bedrijf of organisatie zich aan het wettelijke vereiste “Privacy by Default”?',
+    'Houdt uw onderneming, bedrijf of organisatie zich aan privacy by default?',
     [
       new Option(ChecklistService.PRIVACY_BY_DEFAULT_YES, 'Ja'),
       new Option(ChecklistService.PRIVACY_BY_DEFAULT_NO, 'Nee')
     ],
-    '(Uitleg)',
+    `Er is sprake van privacy by default als de standaardinstellingen van die dienst zo zijn ingesteld dat de betrokkenne de maximale
+    privacy ervaart. U kunt hierbij denken aan het niet-automatisch aanvinken van opties die betrekking hebben op de privacy.`,
     false,
     checklistService => checklistService.hasItems(
       ChecklistService.PRIVACY_BY_DESIGN_YES,

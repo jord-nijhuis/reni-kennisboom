@@ -8,6 +8,8 @@ td {
 
 tr.example-description-row {
   height: 0;
+  text-align: justify;
+  hyphens: auto;
 }
 
 tr.example-expanded-row:hover {
@@ -21,4 +23,5 @@ tr.example-expanded-row:hover {
 .example-element-description {
   overflow: hidden;
   display: flex;
+  padding-left: 6px;
 }

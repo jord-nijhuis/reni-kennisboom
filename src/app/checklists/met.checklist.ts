@@ -8,7 +8,8 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
   [
     new ChecklistItem(
       'Er is een verwerkingsovereenkomst afgesloten met de externe partij',
-      null,
+      'Omdat u de verwerking van persoonsgegevens uitbesteed aan een externe partij, ' +
+      'bent u verplicht een verwerkingsoverenkomst af te sluiten.',
       checklistService => checklistService.hasItems(ChecklistService.AGREEMENT_YES)
     ),
 
@@ -51,26 +52,26 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
     ),
 
     new ChecklistItem(
-      'Er is een Data Protection Impact Assessment (DPIA) uitgevoerd.',
-      null,
+      'Er is een data protection impact assessment (DPIA) uitgevoerd.',
+      'Omdat u persoonsgegvens met een hoog privacyrisico verwerkt, bent u verplicht een data protection impact assessment te doen.',
       checklistService => checklistService.hasItems(ChecklistService.DPIA_YES)
     ),
 
     new ChecklistItem(
       'Er is een functionaris gegevensbescherming aangewezen.',
-      null,
+      'Omdat u persoonsgegvens met een hoog privacyrisico verwerkt, bent u verplicht een functionaris gegevensbescherming aan te stellen.',
       checklistService => checklistService.hasItems(ChecklistService.DATA_PROTECTION_OFFICER_YES)
     ),
 
     new ChecklistItem(
-      'U houdt zich aan het wettelijke vereiste "Privacy by Design".',
-      null,
+      'U houdt zich aan privacy by design.',
+      'U houdt rekening by zorgvuldige omgang van persoonsgegevens bij het ontwerp van uw dienst.',
       checklistService => checklistService.hasItems(ChecklistService.PRIVACY_BY_DESIGN_YES)
     ),
 
     new ChecklistItem(
-      'U houdt zich aan het wettelijke vereiste "Privacy by Default".',
-      null,
+      'U houdt zich aan privacy by default.',
+      'De standaardinstellingen van uw dienst zorgen ervoor dat de betrokkenne de maximale hoeveelheid aan privacy ervaart.',
       checklistService => checklistService.hasItems(ChecklistService.PRIVACY_BY_DEFAULT_YES)
     ),
 
@@ -82,7 +83,7 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
 
     new ChecklistItem(
       'U stelt uw klaneten op de hoogte van hun rechten.',
-      null,
+      'Ondanks dat het niet verplicht is, is het verstandig om de betrokkenne op zijn rechten te wijzen.',
       checklistService => checklistService.hasItems(ChecklistService.INFORMS_SUBJECT_YES)
     ),
   ]

@@ -8,7 +8,15 @@ export const CHECKLIST_UNMET_REQUIREMENTS = new Checklist(
   [
     new ChecklistItem(
       'Er is geen verwerkingsovereenkomst afgesloten met de externe partij.',
-      null,
+      `<p>
+        Omdat u de verwerking van persoonsgegevens uitbesteedt aan een externe partij, bent u verplicht een
+        verwerkingsovereenkomst op te stellen.
+        </p>
+
+        <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/algemene-informatie-avg/verwerkers#wanneer-moet-' +
+          'ik-een-verwerkersovereenkomst-afsluiten-7101'}">
+            Klik hier voor meer informatie van de Autoriteit Persoonsgegevens over de verwerkingsovereenkomst.
+        </a>`,
       checklistService => checklistService.hasItems(ChecklistService.AGREEMENT_NO)
     ),
 
@@ -73,26 +81,29 @@ export const CHECKLIST_UNMET_REQUIREMENTS = new Checklist(
     ),
 
     new ChecklistItem(
-      'Er is geen Data Protection Impact Assessment (DPIA) uitgevoerd.',
-      null,
+      'Er is geen data protection impact assessment (DPIA) uitgevoerd.',
+      'U bent verplicht een data protection impact assessment uit te voeren omdat u persoonsgegevens met een hoog risico verwerkt.',
       checklistService => checklistService.hasItems(ChecklistService.DPIA_NO)
     ),
 
     new ChecklistItem(
       'Er is geen functionaris gegevensbescherming aangewezen.',
-      null,
+      'U bent verplicht een functionaris gegevensbescherming aan te wijzen omdat u persoonsgegevens met een hoog risico verwerkt.',
       checklistService => checklistService.hasItems(ChecklistService.DATA_PROTECTION_OFFICER_NO)
     ),
 
     new ChecklistItem(
-      'U houdt zich niet aan het wettelijke vereiste "Privacy by Design".',
-      null,
+      'U houdt zich niet aan privacy by design.',
+      `<p>Zorg ervoor dat in het ontwerp van uw dienst zowel technisch als organisatorisch rekening gehouden worden met een
+        zorgvuldige omgang van persoonsgegevens</p>`,
       checklistService => checklistService.hasItems(ChecklistService.PRIVACY_BY_DESIGN_NO)
     ),
 
     new ChecklistItem(
-      'U houdt zich niet aan het wettelijke vereiste "Privacy by Default".',
-      null,
+      'U houdt zich niet aan privacy by default.',
+      `<p>
+        Het is verplicht dat de gebruiker de maximale hoeveelheid privacy ervaart op grond van de standaardinstellingen van uw dienst.
+      </p>`,
       checklistService => checklistService.hasItems(ChecklistService.PRIVACY_BY_DEFAULT_NO)
     ),
 

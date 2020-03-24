@@ -357,16 +357,36 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
-    'Is uw onderneming, bedrijf of organisatie zich ervan bewust hoe zij moet handelen ten tijde van een datalek?',
+    'Meldt uw onderneming, bedrijf of organisatie datalekken bij de Autoriteit Persoonsgegevens?',
     [
-      new Option(ChecklistService.KNOWLEDGE_DATA_BREACH_YES, 'Ja'),
-      new Option(ChecklistService.KNOWLEDGE_DATA_BREACH_NO, 'Nee')
+      new Option(ChecklistService.INFORMS_SMALL_DATA_BREACH_YES, 'Ja'),
+      new Option(ChecklistService.INFORMS_SMALL_DATA_BREACH_NO, 'Nee')
     ],
-    'Korte uitleg betreffende verschil kleine datalek en ernstige lek.',
+    `U hoeft een datalek slechts te melden als het waarschijnlijk is dat het datalek lijdt tot een risico voor de rechten en vrijheden
+    van de betrokkenne. <br>
+    <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/beveiliging/meldplicht-datalekken#moet-ik-alle-' +
+    'datalekken-melden-bij-de-autoriteit-persoonsgegevens-5093'}">Klik hier voor meer informatie van de Autoriteit Persoonsgegevens.</a>`,
     false,
     checklistService => checklistService.hasItems(
       ChecklistService.PROCESSING_REGISTRY_YES,
       ChecklistService.PROCESSING_REGISTRY_NO
+    )
+  ),
+
+  new Step(
+    'Meldt uw onderneming, bedrijf of organisatie datalekken met een hoog riscio bij de betrokkenne en de Autoriteit Persoonsgegevens?',
+    [
+      new Option(ChecklistService.INFORMS_LARGE_DATA_BREACH_YES, 'Ja'),
+      new Option(ChecklistService.INFORMS_LARGE_DATA_BREACH_NO, 'Nee')
+    ],
+    `U hoeft een datalek slechts te melden bij de betrokkenne als het waarschijnlijk is dat het datalek lijdt tot een hoog risico
+    voor de rechten en vrijheden van de betrokkenne. <br>
+    <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/beveiliging/meldplicht-datalekken#moet-ik-alle-' +
+    'datalekken-melden-aan-betrokkenen-5094'}">Klik hier voor meer informatie van de Autoriteit Persoonsgegevens.</a>`,
+    false,
+    checklistService => checklistService.hasItems(
+      ChecklistService.INFORMS_SMALL_DATA_BREACH_YES,
+      ChecklistService.INFORMS_SMALL_DATA_BREACH_NO
     )
   ),
 
@@ -376,11 +396,11 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.DATA_BREACH_REGISTRY_YES, 'Ja'),
       new Option(ChecklistService.DATA_BREACH_REGISTRY_NO, 'Nee')
     ],
-    null,
+    'Let op: ook als u het datalek niet hoeft te melden, bent u wel verplicht het datalek bij te houden.',
     false,
     checklistService => checklistService.hasItems(
-      ChecklistService.KNOWLEDGE_DATA_BREACH_YES,
-      ChecklistService.KNOWLEDGE_DATA_BREACH_NO
+      ChecklistService.INFORMS_LARGE_DATA_BREACH_YES,
+      ChecklistService.INFORMS_LARGE_DATA_BREACH_NO
     )
   ),
 

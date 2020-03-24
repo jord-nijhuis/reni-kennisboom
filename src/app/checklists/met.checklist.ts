@@ -87,13 +87,25 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
     ),
 
     new ChecklistItem(
-      'U bent zich ervan bewust hoe u moet handelen ten tijde van een datalek.',
-      null,
-      checklistService => checklistService.hasItems(ChecklistService.KNOWLEDGE_DATA_BREACH_YES)
+      'U meldt datalekken bij de Autoriteit Persoonsgegevens.',
+      `U hoeft datalekken slechts te melden als het waarschijnlijk is dat het datalek lijdt tot een risico voor de rechten en vrijheden
+        van de betrokkenne. <br>
+        <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/beveiliging/meldplicht-datalekken#moet-ik-alle-' +
+      'datalekken-melden-bij-de-autoriteit-persoonsgegevens-5093'}">Klik hier voor meer informatie van de Autoriteit Persoonsgegevens.</a>`,
+      checklistService => checklistService.hasItems(ChecklistService.INFORMS_SMALL_DATA_BREACH_YES)
     ),
 
     new ChecklistItem(
-      'U heeft een datalekregister.',
+      'U meldt ernstige datalekken bij de betrokkenne en de Autoriteit Persoonsgegevens.',
+      `U hoeft ernstige datalekken slechts te melden bij de betrokkenne als het waarschijnlijk is dat het datalek lijdt tot een
+        <strong>hoog</strong> risico voor de rechten en vrijheden van de betrokkenne. <br>
+        <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/beveiliging/meldplicht-datalekken#moet-ik-alle-' +
+      'datalekken-melden-aan-betrokkenen-5094'}">Klik hier voor meer informatie van de Autoriteit Persoonsgegevens.</a>`,
+      checklistService => checklistService.hasItems(ChecklistService.INFORMS_LARGE_DATA_BREACH_YES)
+    ),
+
+    new ChecklistItem(
+      'U houdt een datalekregister bij.',
       null,
       checklistService => checklistService.hasItems(ChecklistService.DATA_BREACH_REGISTRY_YES)
     ),

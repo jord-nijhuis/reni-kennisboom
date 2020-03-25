@@ -236,8 +236,12 @@ export class ChecklistService {
     return this.checklist[key] ?? false;
   }
 
-  public hasItems(...keys: string[]) {
+  public hasItems(...keys: string[]): boolean {
     return keys.some((key) => this.getItem(key));
+  }
+
+  public hasAllItems(...keys: string[]): boolean {
+    return keys.every(key => this.getItem(key));
   }
 
   public deleteItem(key: string) {
@@ -278,7 +282,7 @@ export class ChecklistService {
 
      if (this.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION)) {
         // If the user asks for permission, whether processing is allowed depends on other criteria
-        valid = this.hasItems(
+        valid = this.hasAllItems(
           ChecklistService.PROCESSING_ALLOWED_PERMISSION,
           ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_NO,
           ChecklistService.PROCESSING_ALLOWED_PERMISSION_INFORMED_YES,

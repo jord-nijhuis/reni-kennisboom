@@ -26,11 +26,11 @@ export const CHECKLIST_UNMET_REQUIREMENTS = new Checklist(
 
         const processingErrors: string[] = [];
 
-        if (checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_NO)) {
-          processingErrors.push('<li>De toestemming is ondubbelzinnig gegeven.</li>');
+        if (checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_YES)) {
+          processingErrors.push('<li>De toestemming is niet ondubbelzinnig gegeven.</li>');
         }
 
-        if (checklistService.hasItems(ChecklistService.INFORMS_SUBJECT_NO)) {
+        if (checklistService.hasItems(ChecklistService.PROCESSING_ALLOWED_PERMISSION_INFORMED_NO)) {
           processingErrors.push('<li>De betrokkenne is niet voldoende geïnformeerd.</li>');
         }
 

@@ -22,7 +22,7 @@ export const STEPS: Step[] = [
         'Mijn onderneming, bedrijf of organisatie verwerkt zelfstandig persoonsgegevens.'
       )
     ],
-    'Er worden persoonsgegevevens verwerkt op het moment dat uw informatie verwerkt die over iemand gaat of ' +
+    'Er worden persoonsgegevevens verwerkt op het moment dat u informatie verwerkt die over iemand gaat of ' +
     'te herleiden is naar een persoon. Hierbij kunt u bijvoorbeeld denken aan namen of telefoonnummers.',
     null,
     checklistService => checklistService.hasItems(ChecklistService.START)
@@ -42,7 +42,7 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.AGREEMENT_YES, 'Ja'),
       new Option(ChecklistService.AGREEMENT_NO, 'Nee')
     ],
-    `In de verwerkinsovereenkomst sluit u uit dat de externe partij de persoonsgegevens gaat gebruiken voor eigen doeleinden. <br><br>
+    `In de verwerkingsovereenkomst sluit u uit dat de externe partij de persoonsgegevens gaat gebruiken voor eigen doeleinden. <br>
 
         <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/algemene-informatie-avg/verwerkers#wanneer-moet-' +
           'ik-een-verwerkersovereenkomst-afsluiten-7101'}">
@@ -94,7 +94,7 @@ export const STEPS: Step[] = [
   new Step(
     'Wat is de grondslag van de verwerking van de persoonsgegevens?',
     [
-      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION, 'U heeft toestemming van de betrokkenne'),
+      new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION, 'U heeft toestemming van de betrokkenne.'),
       new Option(ChecklistService.PROCESSING_ALLOWED_NECESSARY, 'De verwerking is noodzakelijk om de overeenkomst uit te voeren.'),
       new Option(
         ChecklistService.PROCESSING_ALLOWED_LAW,
@@ -135,7 +135,7 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.PROCESSING_ALLOWED_PERMISSION_AMBIGUOUS_YES, 'Nee')
     ],
     'Er is sprake van ondubbelzinnige toestemming wanneer de gebruiker zelf moet handelen om de toestemming te verlenen. U mag dus ' +
-    'niet vakjes van tevoren aanvinken.',
+    'bijvoorbeeld niet vakjes van tevoren aanvinken.',
     false,
     checklistService => checklistService.getItem(ChecklistService.PROCESSING_ALLOWED_PERMISSION)
   ),
@@ -236,8 +236,9 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_YES, 'Ja'),
       new Option(ChecklistService.PROCESSING_TRACKING_LARGE_SCALE_NO, 'Nee')
     ],
-    `Hierbij moet u bijvoorbeeld denken aan cameratoezicht over het profileren van mensen. Onder grote schaal valt bijvoorbeeld de
-    verwerking van klantgegevens als standaardprocedure. Slechts een enkele verwerking valt hier niet onder.`,
+    `Hierbij moet u bijvoorbeeld denken aan cameratoezicht voor het profileren van mensen. Onder verwerking op grote schaal valt onder
+      andere verwerkingen als standaardprocedure zoals stelselmatige verwerking van klantgegevens. Slechts een enkele verwerking valt hier
+      niet onder.`,
     false,
     checklistService => {
 
@@ -295,10 +296,10 @@ export const STEPS: Step[] = [
     ],
     `Onder gegevens met een hoog privacyrisico vallen onder andere: <ul>
         <li>Uitgebreide persoonlijke aspecten op grond waarvan besluiten worden genomen die gevolgen hebben voor de betrokkenne;</li>
-        <li>Uitgebreide persoonlijke aspecten op grond waarvan profling plaats kan vinden;</li>
+        <li>Uitgebreide persoonlijke aspecten op grond waarvan profiling plaats kan vinden;</li>
         <li>Bijzondere persoonsgegevens op grote schaal;</li>
         <li>Strafrechtelijke gegevens;</li>
-        <li>Gegevens gerelateerd an het volgen van mensen in een publiek toegankelijk gebied.</li>
+        <li>Gegevens gerelateerd aan het volgen van mensen in een publiek toegankelijk gebied.</li>
     </ul>
     <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/zelf-doen/data-protection-impact-assessment-dpia#voor-welke-' +
     'soorten-verwerkingen-is-het-uitvoeren-van-een-dpia-verplicht-6667'}">Klik hier voor een completere lijst van de Autoriteit
@@ -317,19 +318,21 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.DPIA_YES, 'Ja'),
       new Option(ChecklistService.DPIA_NO, 'Nee')
     ],
-    `Met een data protection impact assessment onderzoekt u vooraf de privacyrisico's van het verwerken van de persoonsgegevens.`,
+    `Met een data protection impact assessment onderzoekt u vooraf de privacyrisico's van het verwerken van de persoonsgegevens.<br>
+    <a target="_blank" href="https://autoriteitpersoonsgegevens.nl/nl/zelf-doen/data-protection-impact-assessment-dpia">Klik hier voor
+    meer informatie van de Autoriteit Persoonsgegevens over een DPIA.</a>`,
     false,
     checklistService => checklistService.getItem(ChecklistService.HIGH_RISK_YES)
   ),
 
   new Step(
-    'Heeft uw onderneming, bedrijf of organisatie heeft een functionaris gegevensbescherming aangesteld?',
+    'Heeft uw onderneming, bedrijf of organisatie een functionaris gegevensbescherming aangesteld?',
     [
       new Option(ChecklistService.DATA_PROTECTION_OFFICER_YES, 'Ja'),
       new Option(ChecklistService.DATA_PROTECTION_OFFICER_NO, 'Nee')
     ],
     'De functionaris gegevensbescherming is iemand binnen uw onderneming, bedrijf of organisatie die toezicht houdt op de ' +
-    'naleving van de verplichtingen uit de Algemene Verordening Gegevensbescherming.',
+    'naleving van de verplichtingen uit de AVG.',
     false,
     checklistService => checklistService.hasItems(
       ChecklistService.DPIA_YES,
@@ -360,8 +363,9 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.PRIVACY_BY_DEFAULT_YES, 'Ja'),
       new Option(ChecklistService.PRIVACY_BY_DEFAULT_NO, 'Nee')
     ],
-    `Er is sprake van privacy by default als de standaardinstellingen van die dienst zo zijn ingesteld dat de betrokkenne de maximale
-    privacy ervaart. U kunt hierbij denken aan het niet-automatisch aanvinken van opties die betrekking hebben op de privacy.`,
+    `Er is sprake van privacy by default als de standaardinstellingen van een dienst zo zijn ingesteld dat de betrokkenne de maximale
+    privacy ervaart. U kunt hierbij denken aan het niet-automatisch aanvinken van opties die betrekking hebben op de privacy (bijvoorbeeld
+    omtrent locatievoorzieningen).`,
     false,
     checklistService => checklistService.hasItems(
       ChecklistService.PRIVACY_BY_DESIGN_YES,
@@ -435,12 +439,12 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
-    'Stelt uw onderneming, bedrijf of organisatie stelt haar klanten op de hoogte van hun rechten?',
+    'Stelt uw onderneming, bedrijf of organisatie haar klanten op de hoogte van hun rechten?',
     [
       new Option(ChecklistService.INFORMS_SUBJECT_YES, 'Ja'),
       new Option(ChecklistService.INFORMS_SUBJECT_NO, 'Nee')
     ],
-    'Dit kan door uw klanten te wijzen of de relevante bepalingen in de AVG of met een privacyverklaring.',
+    'Dit kan door uw klanten te wijzen op de relevante bepalingen in de AVG of door middel van een privacyverklaring.',
     false,
     checklistService => checklistService.hasItems(
       ChecklistService.DATA_BREACH_REGISTRY_YES,
@@ -454,9 +458,9 @@ export const STEPS: Step[] = [
       new Option(ChecklistService.CODE_OF_CONDUCT_YES, 'Ja'),
       new Option(ChecklistService.CODE_OF_CONDUCT_NO, 'Nee')
     ],
-    `In een gedragscode worden de algemene normen van de AVG geconcretiseerd voor alle deelnemers.
+    `In een gedragscode worden de algemene normen van de AVG geconcretiseerd voor alle deelnemers. <br>
     <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/zelf-doen/avg-gedragscode'}">Klik hier voor meer informatie van
-    de Autoriteit Persoonsgegevens.</a>"`,
+    de Autoriteit Persoonsgegevens.</a>`,
     false,
     checklistService => checklistService.hasItems(
       ChecklistService.INFORMS_SUBJECT_YES,
@@ -465,7 +469,7 @@ export const STEPS: Step[] = [
   ),
 
   new Step(
-    'Heeft uw onderneming, bedrijf of organisatie aangesloten speciale AVG-certificering behaald?',
+    'Heeft uw onderneming, bedrijf of organisatie speciale AVG-certificering behaald?',
     [
       new Option(ChecklistService.CERTIFICATE_YES, 'Ja'),
       new Option(ChecklistService.CERTIFICATE_NO, 'Nee')

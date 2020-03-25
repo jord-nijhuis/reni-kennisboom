@@ -125,7 +125,7 @@ export const CHECKLIST_UNMET_REQUIREMENTS = new Checklist(
         van de betrokkenne. <br>
         <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/beveiliging/meldplicht-datalekken#moet-ik-alle-' +
       'datalekken-melden-bij-de-autoriteit-persoonsgegevens-5093'}">Klik hier voor meer informatie van de Autoriteit Persoonsgegevens.</a>`,
-      checklistService => checklistService.hasItems(ChecklistService.INFORMS_LARGE_DATA_BREACH_NO)
+      checklistService => checklistService.hasItems(ChecklistService.INFORMS_SMALL_DATA_BREACH_NO)
     ),
 
     new ChecklistItem(

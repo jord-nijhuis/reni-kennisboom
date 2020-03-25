@@ -1,6 +1,6 @@
 #main-card {
 
-  margin: 32px 0 10px 0;
+  padding: 0;
   width: 100%;
   max-width: 720px;
 }
@@ -11,18 +11,22 @@ mat-card-content {
 }
 
 #container {
+  margin-top: 32px;
   display: flex;
   justify-content: center;
 }
 
 #wrapper {
+  width: 100%;
   max-width: 720px;
 }
 
 .footer {
+  margin-top: 10px;
   color: #B0BEC5;
   text-align: center;
   font-size: 11px;
+  padding: 10px;
 }
 
 .footer > a {

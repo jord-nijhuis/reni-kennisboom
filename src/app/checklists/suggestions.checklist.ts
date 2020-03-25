@@ -33,7 +33,7 @@ export const CHECKLIST_SUGGESTIONS = new Checklist(
     ),
 
     new ChecklistItem(
-      'U kunt zich niet aansluiten bij een gedragscode.',
+      'U kunt zich aansluiten bij een gedragscode.',
       `In een gedragscode worden de algemene normen van de AVG geconcretiseerd voor alle deelnemers.
         <a target="_blank" href="${'https://autoriteitpersoonsgegevens.nl/nl/zelf-doen/avg-gedragscode'}">Klik hier voor meer informatie van
         de Autoriteit Persoonsgegevens.</a>"`,

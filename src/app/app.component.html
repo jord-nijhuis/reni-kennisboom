@@ -5,11 +5,11 @@
 <div id="container">
   <div id="wrapper">
     <mat-card id="main-card">
-      <mat-card-title>
+      <mat-card-title style="padding: 20px">
         Hulp bij het verwerken van persoonsgegevens
       </mat-card-title>
 
-      <mat-card-content>
+      <mat-card-content style="padding: 20px">
         <app-start *ngIf="shouldShowStart()"></app-start>
 
         <app-steps [steps]="steps"></app-steps>

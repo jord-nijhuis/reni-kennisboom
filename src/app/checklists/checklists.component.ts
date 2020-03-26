@@ -32,6 +32,9 @@ export class ChecklistsComponent {
 
   get meetsAllRequirements(): boolean {
 
-    return this.metChecklist.items.every(item => item.shouldShow(this.checklistService));
+    // The user has met all the requirements whenever there are no unmet requirement
+    // It is important to do this this way, as some of the met requirements may find their opposite in the suggestions category. Thus,
+    // triggering a false-negative if testing on the met checklist
+    return !this.unmetChecklist.items.every(item => item.shouldShow(this.checklistService));
   }
 }

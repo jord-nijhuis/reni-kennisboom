@@ -58,12 +58,16 @@ export const CHECKLIST_MET_REQUIREMENTS = new Checklist(
       'Er is een functionaris gegevensbescherming aangewezen.',
       checklistService => {
 
-        const reasons = checklistService.officerRequiredReasons.map(reason => `<li>${reason}</li>`);
+        if (checklistService.officerRequired) {
+          const reasons = checklistService.officerRequiredReasons.map(reason => `<li>${reason}</li>`);
 
-        return `U bent verplicht een functionaris gegevensbescherming aan te stellen op grond van de onderstaande redenen: <ul>
+          return `U bent verplicht een functionaris gegevensbescherming aan te stellen op grond van de onderstaande redenen: <ul>
         ${reasons.join('')}</ul>`;
+        }
+
+        return 'Ondanks dat u niet verplicht bent een functionaris gegevensbescherming aan te stellen, is het toch handig om dit te doen.';
       },
-      checklistService => checklistService.officerRequired && checklistService.hasItems(ChecklistService.DATA_PROTECTION_OFFICER_YES)
+      checklistService => checklistService.hasItems(ChecklistService.DATA_PROTECTION_OFFICER_YES)
     ),
 
     new ChecklistItem(
